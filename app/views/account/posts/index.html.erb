@@ -1,0 +1,15 @@
+<div class="row">
+  <%= render 'shared/sidebar' %>
+  
+  <div class="span12">
+    <% if @posts.empty? %>
+      <p>You haven't made any <%= current_forum.posts_label.downcase %> yet.
+    <% end %>
+    
+    <table class="border-less">
+      <%= render :partial => 'posts/post', :collection => @posts, :locals => {:voting => false} %>
+    </table>
+
+    <%= paginate @posts %>
+  </div>
+</div>

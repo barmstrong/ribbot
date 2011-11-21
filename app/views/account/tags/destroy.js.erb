@@ -1,0 +1,7 @@
+var tr = $('#<%= @dom_id %>');
+tr.fadeOut('fast', function(){
+  tr.remove();
+  if($('#tags tbody tr').length == 0){
+    $('#tags').fadeOut('fast')
+  }
+});

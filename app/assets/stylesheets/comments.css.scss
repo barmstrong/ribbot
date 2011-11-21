@@ -1,0 +1,17 @@
+form.comment-form {
+  textarea { height: 80px; }
+}
+
+$comment-grid: 40px;
+
+.comment-offset0 { margin-left: $comment-grid * 0; }
+.comment-offset1 { margin-left: $comment-grid * 1; }
+.comment-offset2 { margin-left: $comment-grid * 2; }
+.comment-offset3 { margin-left: $comment-grid * 3; }
+.comment-offset4 { margin-left: $comment-grid * 4; }
+.comment-offset5 { margin-left: $comment-grid * 5; }
+.comment-offset6 { margin-left: $comment-grid * 6; }
+.comment-offset7 { margin-left: $comment-grid * 7; }
+.comment-offset8 { margin-left: $comment-grid * 8; }
+
+.comment .comment-form { margin-left: $comment-grid; }

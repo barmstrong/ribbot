@@ -1,0 +1,10 @@
+<% if @tag.errors.present? %>
+  alert("<%= @tag.errors.full_messages.to_sentence %>");
+<% else %>
+  if($('#tags tbody tr').length == 0) {
+    $('#tags').fadeIn('fast')
+  }
+  $('.tags tbody').prepend("<%= escape_javascript(render @tag) %>");
+  $('#<%= dom_id(@tag) %>').effect('highlight');
+  $('#tag_name').val('');
+<% end %>

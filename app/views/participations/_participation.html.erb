@@ -1,0 +1,14 @@
+<% p = participation %>
+
+<tr id="<%= dom_id(p) %>">
+  <td><%= link_to p.user.name, p.user %></td>
+  <td><%= time_ago_in_words p.user.created_at %> ago</td>
+  <td><%= p.level_in_words %></td>
+  <td>
+    <% if p.banned %>
+      <%= link_to 'Unban', unban_participation_path(p), :remote => true, :method => :put, :class => "btn small" %>
+    <% else %>
+      <%= link_to 'Ban', ban_participation_path(p), :remote => true, :method => :put, :class => "btn small" %>
+    <% end %>
+  </td>
+</tr>

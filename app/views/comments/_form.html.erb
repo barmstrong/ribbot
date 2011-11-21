@@ -1,0 +1,21 @@
+<% reply_comment ||= false %>
+
+<%= form_for [@post,@comment], :remote => reply_comment, :html => {:class => "comment-form"} do |f| %>
+  <%= f.hidden_field :parent_id %>
+  
+  <%= f.error_messages :header_message => nil %>
+  
+  <p><%= f.text_area :text, :class => "span8" %></p>
+  <p>
+    <% button_text = @comment.new_record? ? current_forum.new_comment_label : 'Save Changes' %>
+    <%= submit_tag button_text, :class => "btn primary", :disable_with => button_text, :disabled => !signed_in? %>
+    
+    <% if reply_comment %>
+      <%= link_to "cancel", '#', :class => "cancel-link btn" %>
+    <% end %>
+    
+    <% if not signed_in? %>
+      <%= link_to "Sign in or create an account", signin_path %> to discuss.
+    <% end %>
+  </p>
+<% end %>

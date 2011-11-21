@@ -1,0 +1,36 @@
+<%
+  show_post_link     = false if local_assigns[:show_post_link].nil?
+  voting             = false if local_assigns[:voting].nil?
+  show_tags          = false if local_assigns[:show_tags].nil?
+  show_comments_link = false if local_assigns[:show_comments_link].nil?
+%>
+
+<p class="byline">
+  <%= render :partial => 'votes/vote', :locals => {:voteable => comment_or_post} if voting %>
+  
+  <span class='points'><%= comment_or_post.votes_point %></span> point<%= 's' unless comment_or_post.votes_point == 1 %>
+  
+  by <%= link_to image_tag(comment_or_post.user.gravatar_url), comment_or_post.user %> 
+  
+  <%= link_to comment_or_post.user.name, comment_or_post.user, :class => "user-link" %> <%= time_ago_in_words comment_or_post.created_at %> ago
+  
+  <% if show_post_link %>
+    <% if comment_or_post.is_a?(Comment) %>
+      on <%= link_to comment_or_post.post.title, comment_or_post.post %>
+    <% elsif comment_or_post.is_a?(Post) %>
+    on <%= link_to comment_or_post.title, comment_or_post %>
+    <% end %>
+  <% end %>
+  
+  <%= comment_or_post.ranking.round(6) if params[:ranking].present? %>
+  
+  <% if show_comments_link and comment_or_post.is_a?(Post) %>
+    with <%= link_to pluralize(comment_or_post.comment_count, 'comment'), post_path(comment_or_post) %>
+  <% end %>
+  
+  <% if show_tags and comment_or_post.is_a?(Post) %>
+    <% comment_or_post.tags.each do |t| %>
+      <%= link_to t.name, root_path(:tags => t.name), :class => "tag" %>
+    <% end %>
+  <% end %>
+</p>

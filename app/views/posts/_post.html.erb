@@ -1,0 +1,20 @@
+<%
+  voting    = true  if local_assigns[:voting].nil?
+%>
+
+<tr class="post" id="<%= dom_id(post) %>">
+  <% if voting %>
+    <td>
+      <%= render :partial => 'votes/vote', :locals => {:voteable => post} %>
+    </td>
+  <% end %>
+    
+  <td class="description">
+    <% if post.url.present? %>
+      <%= link_to post.title, post.url, :rel => 'nofollow', :class => 'post-link' %>
+    <% else %>
+      <%= link_to post.title, post, :class => 'post-link' %>
+    <% end %>
+    <%= render :partial => 'shared/byline', :locals => {:comment_or_post => post, :show_comments_link => true} %>
+  </td>
+</tr>

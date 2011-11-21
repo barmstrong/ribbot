@@ -1,0 +1,10 @@
+<% if flash.present? %>
+  <div class="flash">
+    <% flash.each do |type, msg| %>
+      <%= content_tag :div, :class => "alert-message #{flash_type_to_css_class type}", :'data-alert' => 'alert' do %>
+        <%= msg %>
+        <%#= link_to('x','#',:class => 'close') %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

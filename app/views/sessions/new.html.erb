@@ -1,0 +1,47 @@
+<div class="row">
+  
+  <div class="span6 offset2">
+    <%= form_tag sessions_path, :class => "form-stacked", :id => 'new_session' do |f| %>
+      <h1>Sign In</h1>
+
+      <div class="field">
+        <%= label_tag :email %>
+        <%= text_field_tag :email %>
+      </div>
+      <p></p>
+      <div class="field">
+        <%= label_tag :password %>
+        <%= password_field_tag :password %>
+      </div>
+
+      <fieldset>
+        <%= submit_tag "Sign In", :class => "btn primary", :disable_with => "Signing in..." %>
+      </fieldset>
+
+      <p>&nbsp;</p>
+      <p><%= link_to "Forgot password?", new_password_reset_path %></p>
+    <% end %>
+  </div>
+  
+  <div class="span6 offset1">
+    <%= form_for (@user || User.new), :html => {:class => "form-stacked"} do |f| %>
+      <h1>Create Account</h1>
+      
+      <div class="field">
+        <%= f.label :email, 'Your Email' %>
+        <%= f.text_field :email %>
+      </div>
+      <p></p>
+      <div class="field">
+        <%= f.label :password, 'Choose a Password' %>
+        <%= f.password_field :password %>
+      </div>
+
+      <fieldset>
+        <%= submit_tag "Create Account", :class => "btn success", :disable_with => "Creating..." %>
+      </fieldset>
+      
+    <% end %>
+  </div>
+  
+</div>

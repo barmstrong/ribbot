@@ -1,0 +1,18 @@
+<tr class="tag" id="<%= dom_id(tag) %>">
+  <td><span class="handle ui-icon ui-icon-arrowthick-2-n-s"></span></td>
+  <td>
+    <div class="show"><%= tag.name %></div>
+    <div class='edit' style='display: none;'>
+      <%= form_for tag, :url => account_tag_path(tag), :remote => true do |f| %>
+        <%= f.text_field :name, :class => 'span3' %>
+        <%= f.submit 'Save', :class => 'btn' %>
+        or <%= link_to 'cancel', '#', :class => 'cancel-edit-tag-link' %>
+      <% end %>
+    </div>
+  </td>
+  <td><%= tag.posts_count %></td>
+  <td>
+    <%= link_to 'edit', '#', :class => 'edit-tag-link' %>
+    <%= link_to 'delete', account_tag_path(tag), :method => :delete, :remote => true, :confirm => (tag.posts_count < 5 ? nil : "Are you sure?  This tag is being used on #{pluralize tag.posts_count, 'post'}.") %>
+  </td>
+</tr>

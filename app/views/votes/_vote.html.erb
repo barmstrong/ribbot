@@ -1,0 +1,13 @@
+<span class="voting">
+  <% if voteable.user == current_user %>
+    <span class="dead-links">&#9650; &#9660;</span>
+  <% elsif !signed_in? %>
+    <%= link_to "&#9650;".html_safe, votes_path %>
+    <%= link_to "&#9660;".html_safe, votes_path %>
+  <% else %>
+    <%= link_to "&#9650;".html_safe, votes_path,
+        :class => "upvote #{'on' if current_user.up_voted?(voteable)}" %>
+    <%= link_to "&#9660;".html_safe, votes_path,
+        :class => "downvote #{'on' if current_user.down_voted?(voteable)}" %>
+  <% end %>
+</span>

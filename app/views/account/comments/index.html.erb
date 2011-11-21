@@ -1,0 +1,13 @@
+<div class="row">
+  <%= render 'shared/sidebar' %>
+  
+  <div class="span12">
+    <% if @comments.empty? %>
+      <p>You haven't made any <%= current_forum.comments_label.downcase %> yet.
+    <% end %>
+    
+    <%= render :partial => 'comments/comment', :collection => @comments, :locals => {:indent => false, :show_post_link => true, :show_links => false, :voting => false} %>
+
+    <%= paginate @comments %>
+  </div>
+</div>

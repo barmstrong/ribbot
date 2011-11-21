@@ -1,0 +1,53 @@
+<div class="row">
+  <%= render 'shared/sidebar' %>
+  
+  <div class="span12">
+    <%= form_for current_user, :url => account_profile_path do |f| %>
+      <div class="clearfix">
+        <div class="input"><h3>Edit Profile</h3></div>
+      </div>
+      
+      <%= f.error_messages :header_message => nil %>
+
+      <div class="clearfix">
+        <%= f.label :name %>
+        <div class="input"><%= f.text_field :name %></div>
+      </div>
+      
+      <div class="clearfix">
+        <%= f.label :email %>
+        <div class="input"><%= f.text_field :email %></div>
+      </div>
+
+      <div class="actions">
+        <%= submit_tag "Update Profile", :class => "btn primary", :disable_with => "Updating..." %>
+      </div>
+    <% end %>
+    
+    <%= form_for current_user, :url => password_reset_user_path(current_user) do %>
+      <div class="clearfix">
+        <div class="input"><h3>Change Password</h3></div>
+      </div>
+
+      <div class="clearfix">
+        <%= label_tag :old_password %>
+        <div class="input"><%= password_field_tag :old_password %></div>
+      </div>
+      
+      <div class="clearfix">
+        <%= label_tag :password %>
+        <div class="input"><%= password_field_tag :password %></div>
+      </div>
+      
+      <div class="clearfix">
+        <%= label_tag :password_confirmation %>
+        <div class="input"><%= password_field_tag :password_confirmation %></div>
+      </div>
+
+      <div class="actions">
+        <%= submit_tag "Reset Password", :class => "btn primary", :disable_with => "Reseting..." %>
+      </div>
+    <% end %>
+    
+  </div>
+</div>

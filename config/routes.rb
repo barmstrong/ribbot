@@ -1,4 +1,52 @@
 Ribbot::Application.routes.draw do
+
+  namespace :account do
+    resources :comments
+    resources :posts
+    resource  :profile
+    resources :users
+    resources :settings
+    resources :tags do
+      post :sort, :on => :collection
+    end
+    resources :themes
+  end
+
+  resources :posts do
+    resources :comments
+  end
+  resources :forums
+  resources :votes
+  resources :users do
+    member do
+      put :password_reset
+    end
+    collection do
+      post :create_with_forum
+    end
+  end
+  resources :participations do
+    member do
+      put :ban
+      put :unban
+    end
+  end
+  
+  resources :verifications
+  resources :password_resets
+  resources :sessions
+
+  match 'signin' => "sessions#new"
+  match 'signout' => "sessions#destroy", :via => :delete
+  match 'features' => 'static#features'
+  match 'pricing' => 'static#pricing'
+  
+  constraints(Subdomain) do
+    match '/' => 'posts#index'  
+  end
+  
+  root :to => 'users#new'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +96,7 @@ Ribbot::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  # root :to => 'users#new'
 
   # See how all your routes lay out with "rake routes"
 

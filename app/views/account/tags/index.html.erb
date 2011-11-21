@@ -1,0 +1,26 @@
+<div class="row">
+  <%= render 'shared/sidebar' %>
+  
+  <div class="span12">
+    <%= form_for @tag, :url => account_tags_path, :remote => true do |f| %>
+      <p>Tags can be used to categorize <%= current_forum.posts_label.downcase %> in your forum.</p>
+
+      <%= f.error_messages :header_message => nil %>
+
+      <%= f.text_field :name, :class => "span3" %> <%= f.submit 'Create Tag', :class => "btn primary", :disable_with => "Creating..." %>
+    <% end %>
+    
+    <table id='tags' class="tags borderless" data-update-url="<%= sort_account_tags_url %>">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Tag</th>
+          <th><%= current_forum.post_label %> Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @tags %>
+      </tbody>
+    </table>
+  </div>
+</div>

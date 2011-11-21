@@ -1,0 +1,30 @@
+<%
+  indent            = true  if local_assigns[:indent].nil?
+  show_post_link    = false if local_assigns[:show_post_link].nil?
+  show_links        = true  if local_assigns[:show_links].nil?
+  voting            = true  if local_assigns[:voting].nil?
+%>
+
+<div class="comment <%= comment_offset(comment.depth) if indent %>" id="<%= dom_id(comment) %>">
+  <div class="show">
+    <%= render :partial => 'shared/byline', :locals => {:comment_or_post => comment, :show_post_link => show_post_link, :voting => voting} %>
+  
+    <% if comment.deleted %>
+      <p><small>[deleted]</small></p>
+    <% else %>
+      <%= simple_format comment.text %>
+  
+      <% if show_links %>
+        <p>
+          <%= link_to 'reply', '#', :class => "reply-link" %>
+          <% if can? :edit, comment %>
+            <%= link_to 'edit', edit_post_comment_path(@post, comment) %>
+          <% end %>
+          <% if can? :destroy, comment %>
+            <%= link_to 'delete', post_comment_path(@post, comment), :method => :delete, :confirm => "Are you sure you want to delete this #{current_forum.comment_label.downcase}?" %>
+          <% end %>
+        </p>
+      <% end %>
+    <% end %>
+  </div>
+</div>

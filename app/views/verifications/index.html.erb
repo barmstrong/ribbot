@@ -1,0 +1,5 @@
+<div class="hero-unit">
+  <h3>Please verify your email by clicking the link we just sent to <em><%= current_user.email %></em>.  Thanks!</h3>
+  <h6>If you don't see the email you may want to check your spam folder and mark it as not spam.</h6>
+  <p><%= button_to 'Resend Verification Email', verifications_path, :class => "btn" %></p>
+</div>

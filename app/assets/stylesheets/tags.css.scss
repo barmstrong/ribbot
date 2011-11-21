@@ -1,0 +1,40 @@
+.handle { cursor: move; }
+
+.tags {
+  tr {
+    a { display: inline-block; }
+    form { margin: 0; }
+  }
+}
+
+a.tag {
+  padding: 0 7px;
+  margin-right: 2px;
+  margin-bottom: 5px;
+  font-size: 12px;
+  line-height: 24px;
+  border: 1px solid transparent;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  display: inline-block;
+  color: #555;
+}
+
+a.tag:hover {
+  background-color: #eee;
+  text-decoration: none;
+}
+a.tag.active {
+  color: #ffffff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  background-color: #555;
+  background: #555 url(/assets/tag_remove.png) no-repeat 7px center;
+  padding-left: 21px;
+}
+
+input.tag-checkbox {
+  display: none;
+}

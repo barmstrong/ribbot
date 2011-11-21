@@ -1,0 +1,21 @@
+<%
+  show = true
+  show = false if Rails.env.test?
+  show = @posts.size > 5 rescue show
+  show = @posts.results.size > 5 rescue show
+  show = @comments.size > 5 rescue show
+%>
+
+<% if show %>
+  <script type="text/javascript"><!--
+  google_ad_client = "ca-pub-7721655128098525";
+  /* Ribbot sidebar */
+  google_ad_slot = "4667431976";
+  google_ad_width = 200;
+  google_ad_height = 200;
+  //-->
+  </script>
+  <script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+  </script>
+<% end %>

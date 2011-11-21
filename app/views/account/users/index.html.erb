@@ -1,0 +1,21 @@
+<div class="row">
+  <%= render 'shared/sidebar' %>
+  
+  <div class="span12">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Signed Up</th>
+          <th>Level</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render :partial => "participations/participation", :collection => @participations %>
+      </tbody>
+    </table>
+
+    <%= paginate @participations %>
+  </div>
+</div>

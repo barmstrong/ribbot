@@ -1,14 +1,82 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Ribbot</title>
+  <title><%= title %></title>
+  <meta name="Description" content="<%= meta_description %>">
+  <link rel="shortcut icon" href="/favicon.ico" />
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= controller_name %> <%= action_name %>">
 
-<%= yield %>
+  <div class="topbar">
+    <div class="fill">
+      <div class="container">
+        <%= link_to site_name, root_path, :class => "brand" %>
+        
+        <% if current_forum.nil? %>
+          <ul class="nav">
+            <li class="<%= 'active' if action_name == 'features' %>"><%= link_to 'Features', features_path %></li>
+            <li class="<%= 'active' if action_name == 'pricing' %>"><%= link_to 'Pricing', pricing_path %></li>
+            <li><%= link_to 'Support', root_url(:subdomain => 'support')%></li>
+          </ul>
+        <% else %>
+          <ul class="nav">
+            <li class="<%= 'active' if controller_name == 'forums' %>"><%= link_to "Home", root_path %></li>
+          </ul>
+        <% end %>
+        
+        <ul class="nav secondary-nav">
+          <% if signed_in? %>
+            <% if current_forum %>
+              <li class="<%= 'active' if current_namespace == 'Account' %>"><%= link_to current_user.name, account_comments_path %></li>
+            <% else %>
+              <li><%= link_to current_user.name, forums_path %></li>
+            <% end %>
+            <li><%= link_to "Sign Out", signout_path, :method => :delete %></li>
+          <% else %>
+            <li class="<%= "active" if signin_active? %>"><%= link_to "Sign In", signin_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <%= render 'shared/flashy' %>
+  
+  <div class="container">
+    
+    <% if @sidebar %>    
+      <div class="page-header">
+        <h1><%= current_forum.name %> <small><%= current_forum.slogan %></small></h1>
+      </div>
+      <div class="row">
+        <%= render 'shared/sidebar' %>
+        <div class="span10">
+          <%= yield %>
+        </div>
+      </div>
+    <% else %>
+      <%= yield %>
+    <% end %>
+    
+    <footer>
+      <% if request.subdomain.present? and request.subdomain != 'www' %>
+        <p class='pull-right'>
+          Powered by 
+          <% if Rails.env.production? %>
+            <%= link_to "Ribbot.com", "http://ribbot.com" %>
+          <% else %>
+            <%= link_to "Ribbot.com", "http://ribbot.local:3000" %>
+          <% end %>
+        </p>
+      <% else %>
+        <p>&copy; Ribbot <%= Time.now.year %></p>
+      <% end %>
+    </footer>
+  </div>
+  
 
 </body>
 </html>

@@ -1,0 +1,44 @@
+<div class="hero-unit home">
+  <div class="row">
+    <div class="span10">
+      <h1>Simple, Beautiful Discussion Forums</h1>
+      <p></p>
+      <h2>For customer support, news aggregation, question/answer sites, and online communities.</h2>
+    </div>
+    
+    <div class="span4">
+      <%= form_for @user, :url => create_with_forum_users_path, :html => {:class => "form-stacked"} do |f| %>
+        <% if @user.errors.any? or @forum.errors.any? %>
+          <div class="error_messages">
+            <ul>
+              <% for message in @user.errors.full_messages.reject{|msg| msg =~ /digest/} %>
+                <li><%= message %></li>
+              <% end %>
+              <% for message in @forum.errors.full_messages %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <p>
+          <%= f.label :email, 'Enter Your Email' %>
+          <%= f.text_field :email %>
+        </p>
+        
+        <p>
+          <%= f.label :password, 'Choose A Password' %>
+          <%= f.password_field :password %>
+        </p>
+        
+        <p>
+          <%= label_tag :subdomain, 'Name Your Forum' %>
+          <span style="font-size: 80%;">http://<%= text_field_tag :subdomain, nil, :style => "width: 80px;" %>.ribbot.com</span>
+        </p>
+
+        <fieldset>
+          <%= submit_tag "Get Started &raquo;".html_safe, :class => "btn primary large", :disable_with => "Starting..." %>
+        </fieldset>
+      <% end %>
+    </div>
+  </div>
+</div>

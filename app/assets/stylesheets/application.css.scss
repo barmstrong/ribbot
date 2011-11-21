@@ -1,0 +1,30 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require twitter/bootstrap
+ *= require_self
+ *= require_tree .
+ *= require jquery-ui/smoothness
+*/
+
+.topbar { position: static; margin-bottom: 19px; }
+.topbar a:visited { color: #BFBFBF; }
+.topbar a.brand { text-decoration: none; color: #fff; }
+footer { clear: both; }
+.flash { min-height: 18px; position: absolute; float: left; left: 50%; top: 0%; }
+.flash .alert-message { float: left; position: relative; left: -50%; }
+.divider { height: 1px; margin: 5px 0; overflow: hidden; background-color: #eee; border-bottom: 1px solid #ffffff; }
+
+.right-sidebar { border-left: 1px solid #DDD; padding-left: 19px; height: 100%; }
+.left-sidebar { border-right: 1px solid #DDD; padding-right: 19px; height: 100%; }
+
+.byline,
+.byline a.user-link { color: #777; }
+
+.left-sidebar h5.active a { color: black; }
+
+footer .pull-right,
+footer .pull-right a { font-size: 11px; color: #999; }
+
+table.border-less td { border: none; }

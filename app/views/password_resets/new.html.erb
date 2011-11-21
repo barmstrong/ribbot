@@ -1,0 +1,16 @@
+<div class="span-one-third offset-one-third">
+  <%= form_tag password_resets_path, :class => "form-stacked signin" do %>
+    <h1>Reset Password</h1>
+
+    <div class="field">
+      <%= label_tag :email, 'Your Email' %>
+      <%= text_field_tag :email %>
+    </div>
+
+    <fieldset>
+      <%= submit_tag "Reset Password", :class => "btn primary", :disable_with => "Resetting..." %>
+    </fieldset>
+
+  <% end %>
+  
+</div>

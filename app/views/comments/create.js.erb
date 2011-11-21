@@ -1,0 +1,4 @@
+$('#comment_<%= @comment.parent.id %> form').remove();
+<% if @comment.save %>
+  $('#comment_<%= @comment.parent.id %>').after("<%= escape_javascript(render @comment) %>");
+<% end %>

@@ -1,0 +1,8 @@
+<div class='pull-right'>
+  <%= link_to '+ Create A Forum', new_forum_path, :class => "btn" %>
+</div>
+<h1>My Forums</h1>
+
+<% @forums.each do |f| %>
+  <h2><%= link_to f.name, root_url(:subdomain => f.subdomain) %></h2>
+<% end %>

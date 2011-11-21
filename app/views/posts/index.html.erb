@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="span12">
+    
+    <%= link_to current_forum.new_post_label, new_post_path, :class => "btn primary pull-right" %>
+    <%= form_tag posts_path, :method => :get do %>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :class => "btn", :disable_with => "Search" %>
+      <% if params[:search].present? %>
+        &nbsp;<%= link_to 'clear', root_path %>
+      <% end %>
+    <% end %>
+    
+    <% if @posts.empty? and current_forum.posts.empty? %>
+      <div class="alert-message block-message success">
+        <p><strong>Welcome! This is a brand new forum</strong></p>
+        <p>To get started trying adding the first post.</p>
+        <div class="alert-actions">
+          <%= link_to current_forum.new_post_label, new_post_path, :class => "btn" %>
+        </div>
+      </div>
+    <% elsif @posts.empty? %>
+      <div class="alert-message block-message info">
+        <p><strong>Your search didn't return an results!</strong></p>
+        <p>Please try a new search or click 'clear'.</p>
+      </div>
+    <% else %>
+    
+      <table class="zebra-striped">
+        <% if params[:search].present? %>
+          <%= render @posts.results %>
+        <% else %>
+          <%= render @posts %>
+        <% end %>
+      </table>
+      
+      <%= paginate @posts %>
+    <% end %>
+  </div>
+  <div class="span4" style="padding-top: 32px;">
+    <%= render 'shared/tags' %>
+    <%= render 'shared/ads' %>
+  </div>
+</div>

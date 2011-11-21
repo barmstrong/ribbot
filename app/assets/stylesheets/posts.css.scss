@@ -1,0 +1,12 @@
+form.post-form {
+  textarea { height: 150px; }
+  
+  .url-link.active,
+  .text-link.active { color: #333; text-decoration: none; cursor: default; }
+}
+
+.post { clear: both; }
+.post .description { width: 100%; }
+.post .description .byline { margin-bottom: 0; }
+
+.post-link { font-weight: bold;   }
