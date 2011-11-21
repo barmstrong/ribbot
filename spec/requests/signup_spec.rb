@@ -7,7 +7,7 @@ describe "Signup" do
     
     fill_in 'user_email', :with => "user@example.com"
     fill_in 'user_password', :with => "test123"
-    fill_in 'subdomain', :with => "test"
+    fill_in 'subdomain', :with => "testing1"
     
     assert_difference "User.count" do
       assert_difference "Forum.count" do

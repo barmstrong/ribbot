@@ -8,7 +8,7 @@ describe "Forums" do
     signin_as u
     visit new_forum_path
     current_path.should == new_forum_path
-    fill_in 'forum_subdomain', :with => "test"
+    fill_in 'forum_subdomain', :with => "testing1"
     assert_difference "Forum.count" do
       click_on 'Create Forum'
     end
