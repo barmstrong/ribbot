@@ -1,8 +1,9 @@
 source 'http://rubygems.org'
 
 gem 'rails',                   '3.1.1'
-gem 'mongoid',                 '= 2.3.0'
-gem 'bson_ext',                '= 1.4.0'
+gem 'mongoid',                 '2.3.3'
+#gem 'bson',                    '1.4.1'
+#gem 'bson_ext',                '1.4.1'
 gem 'jquery-rails',            '1.0.16'
 gem 'twitter-bootstrap-rails', '1.4.0'
 gem 'database_cleaner',        '0.6.7'
