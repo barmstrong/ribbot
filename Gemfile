@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails',                   '3.1.1'
-gem 'mongoid',                 '2.3.2'
+gem 'mongoid',                 '2.3.0'
 gem 'bson_ext',                '1.4.0'
 gem 'jquery-rails',            '1.0.16'
 gem 'twitter-bootstrap-rails', '1.4.0'
