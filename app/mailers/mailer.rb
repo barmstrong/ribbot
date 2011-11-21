@@ -1,5 +1,5 @@
 class Mailer < ActionMailer::Base
-  default from: "no-reply@ribbot.com"
+  default from: "Ribbot.com <contact@ribbot.com>"
 
   def password_reset user
     @user = user
