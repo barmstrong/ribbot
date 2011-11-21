@@ -31,12 +31,17 @@ class Forum
   validates_presence_of :subdomain, :name
   validates_uniqueness_of :subdomain, :case_sensitive => false
   validate :subdomain_uses_valid_characters
+  validate :subdomain_uses_valid_name
   
   before_validation :set_default_name
   before_save :downcase_subdomain
   
   def subdomain_uses_valid_characters
     errors.add(:subdomain, "can only use numbers and letters") if subdomain =~ /[^a-z0-9]/i
+  end
+  
+  def subdomain_uses_valid_name
+    errors.add(:subdomain, "is already taken") if ['blog','legal','www','help','test','contact','jobs','about'].include?(subdomain.downcase)
   end
   
   def set_default_name
