@@ -57,4 +57,9 @@ Ribbot::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  config.middleware.use ExceptionNotifier,
+    :email_prefix => "[Exception] ",
+    :sender_address => %{"Exception Notifier" <contact@ribbot.com>},
+    :exception_recipients => %w{barmstrong@gmail.com}
 end

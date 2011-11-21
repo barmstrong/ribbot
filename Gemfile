@@ -1,22 +1,24 @@
 source 'http://rubygems.org'
 
-gem 'rails',                   '3.1.1'
-gem 'mongoid',                 '2.3.3'
-gem 'bson',                    '1.4.0'
-gem 'bson_ext',                '1.4.0'
-gem 'jquery-rails',            '1.0.16'
-gem 'twitter-bootstrap-rails', '1.4.0'
-gem 'database_cleaner',        '0.6.7'
-gem 'bcrypt-ruby',             '3.0.1'
-gem 'kaminari',                '0.12.4'
-gem 'gravtastic',              '3.2.6'
-gem 'mongoid_nested_set',      '0.1.3'
-gem 'cancan',                  '1.6.7'
-gem 'sunspot_mongoid',         '0.4.1', :git => "git://github.com/TV4/sunspot_mongoid.git"
-gem 'sunspot_rails',           :git => "git://github.com/sunspot/sunspot.git"
-gem 'sunspot_with_kaminari',   '0.1.0'
-gem 'voteable_mongo',          '0.9.3'
-gem 'acts_as_list_mongoid',    '0.2.4'
+gem 'rails',                         '3.1.1'
+gem 'mongoid',                       '2.3.3'
+gem 'bson',                          '1.4.0'
+gem 'bson_ext',                      '1.4.0'
+gem 'jquery-rails',                  '1.0.16'
+gem 'twitter-bootstrap-rails',       '1.4.0'
+gem 'database_cleaner',              '0.6.7'
+gem 'bcrypt-ruby',                   '3.0.1'
+gem 'kaminari',                      '0.12.4'
+gem 'gravtastic',                    '3.2.6'
+gem 'mongoid_nested_set',            '0.1.3'
+gem 'cancan',                        '1.6.7'
+gem 'sunspot_mongoid',               '0.4.1', :git => "git://github.com/TV4/sunspot_mongoid.git"
+gem 'sunspot_rails',                 :git => "git://github.com/sunspot/sunspot.git"
+gem 'sunspot_with_kaminari',         '0.1.0'
+gem 'voteable_mongo',                '0.9.3'
+gem 'acts_as_list_mongoid',          '0.2.4'
+gem 'aws-ses',                       '0.4.4', :require => 'aws/ses'
+gem 'exception_notification_rails3', '1.2.0', :require => 'exception_notifier'
 
 
 group :assets do
