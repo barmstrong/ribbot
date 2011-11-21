@@ -60,8 +60,18 @@ Ribbot::Application.configure do
 
   config.action_mailer.default_url_options = { :host => "ribbot.com" }
   
-  # config.middleware.use ExceptionNotifier,
-  #   :email_prefix => "[Exception] ",
-  #   :sender_address => %{"Exception Notifier" <contact@ribbot.com>},
-  #   :exception_recipients => %w{barmstrong@gmail.com}
+  ActionMailer::Base.smtp_settings = {
+    :address        => 'smtp.sendgrid.net',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => ENV['SENDGRID_USERNAME'],
+    :password       => ENV['SENDGRID_PASSWORD'],
+    :domain         => 'heroku.com'
+  }
+  ActionMailer::Base.delivery_method = :smtp
+  
+  config.middleware.use ExceptionNotifier,
+    :email_prefix => "[Exception] ",
+    :sender_address => %{"Exception Notifier" <contact@ribbot.com>},
+    :exception_recipients => %w{barmstrong@gmail.com}
 end
