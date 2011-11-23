@@ -11,6 +11,7 @@ if Rails.env.development?
   DatabaseCleaner.clean
   
   u1, f1 = create_user_with_forum({:email => 'user1@example.com', :name => "Brian Armstrong"}, {:subdomain => 'support', :name => "Ribbot Support"})
+  u1.update_attribute :superuser, true
   u2, f2 = create_user_with_forum({:email => 'user2@example.com', :name => "Bubba Gump"}, {:subdomain => 'test'})
   
   p1 = create_post :forum => f1, :user => u1, :title => "My first post", :text => "here is some text"

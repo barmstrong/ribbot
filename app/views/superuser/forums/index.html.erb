@@ -1,0 +1,19 @@
+<%= render 'shared/superuser_tabs' %>
+
+<table class="zebra-striped">
+  <thead>
+    <tr>
+      <th>Forum</th>
+      <th>Created</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @forums.each do |f| %>
+      <tr>
+        <td><%= link_to f.name, root_url(:subdomain => f.subdomain) %></td>
+        <td><%= time_ago_in_words f.created_at %> ago</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @forums %>

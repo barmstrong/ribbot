@@ -53,6 +53,12 @@ module Ribbot
     config.assets.version = '1.0'
     
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| "<span class='field_with_errors'>#{html_tag}</span>".html_safe }
+    
+    config.generators do |g|
+      g.controller_specs false
+      g.view_specs false
+      g.helper_specs false
+    end
   end
 end
 

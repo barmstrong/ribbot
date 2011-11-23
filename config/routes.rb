@@ -1,17 +1,5 @@
 Ribbot::Application.routes.draw do
 
-  namespace :account do
-    resources :comments
-    resources :posts
-    resource  :profile
-    resources :users
-    resources :settings
-    resources :tags do
-      post :sort, :on => :collection
-    end
-    resources :themes
-  end
-
   resources :posts do
     resources :comments
   end
@@ -31,6 +19,22 @@ Ribbot::Application.routes.draw do
       put :unban
       put :hide
     end
+  end
+  
+  namespace :account do
+    resources :comments
+    resources :posts
+    resource  :profile
+    resources :users
+    resources :settings
+    resources :tags do
+      post :sort, :on => :collection
+    end
+    resources :themes
+  end
+  
+  namespace :superuser do
+    resources :forums
   end
   
   resources :verifications

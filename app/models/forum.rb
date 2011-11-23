@@ -41,7 +41,7 @@ class Forum
   end
   
   def subdomain_uses_valid_name
-    errors.add(:subdomain, "is already taken") if ['blog','legal','www','help','test','contact','jobs','about'].include?(subdomain.downcase)
+    errors.add(:subdomain, "is already taken") if ['blog','legal','www','help','contact','jobs','about'].include?(subdomain.downcase)
   end
   
   def set_default_name

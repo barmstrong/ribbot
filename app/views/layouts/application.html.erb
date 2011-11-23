@@ -9,6 +9,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= controller_name %> <%= action_name %>">
+  <% if current_user and current_user.superuser? %>
+    <div class="admin-link">
+      <%= link_to "Admin", superuser_forums_path %>
+    </div>
+  <% end %>
 
   <div class="topbar">
     <div class="fill">

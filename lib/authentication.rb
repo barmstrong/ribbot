@@ -35,6 +35,17 @@ module Authentication
     end
   end
   
+  def authenticate_superuser!
+    if authenticate_user!
+      if current_user.superuser?
+        true
+      else
+        redirect_to signin_path
+      end
+    end
+    false
+  end
+  
   # makes some methods available in views
   def self.included(base)
     base.helper_method :current_user, :signed_in? if base.respond_to? :helper_method
