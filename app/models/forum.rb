@@ -55,7 +55,11 @@ class Forum
   end
   
   def add_member user
-    participations.create!(:user => user, :level => Participation::MEMBER)
+    if p = participations.where(:user_id => user.id).first
+      p.update_attribute :hidden, false if p.hidden?
+    else
+      participations.create!(:user => user, :level => Participation::MEMBER)
+    end
   end
   
   def downcase_subdomain

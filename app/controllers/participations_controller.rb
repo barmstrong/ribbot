@@ -4,13 +4,18 @@ class ParticipationsController < ApplicationController
   load_and_authorize_resource
   
   def ban
-    #@participation = Participation.find(params[:id])
     @participation.update_attribute :banned, true
   end
   
   def unban
-    #@participation = Participation.find(params[:id])
     @participation.update_attribute :banned, false
     render :ban
+  end
+  
+  def hide
+    if @participation.level == Participation::MEMBER
+      @participation.update_attribute :hidden, true
+    end
+    redirect_to forums_path
   end
 end

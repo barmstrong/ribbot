@@ -41,7 +41,7 @@ class Post
   end
   
   def create_participation
-    forum.add_member(user) unless user.member_of?(forum)
+    forum.add_member(user)
   end
   
   def user_is_not_banned

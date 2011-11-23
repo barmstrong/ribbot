@@ -29,6 +29,7 @@ Ribbot::Application.routes.draw do
     member do
       put :ban
       put :unban
+      put :hide
     end
   end
   

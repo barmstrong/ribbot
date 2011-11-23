@@ -7,7 +7,8 @@ class ForumsController < ApplicationController
   end
   
   def index
-    @forums = current_user.forums.order(:name)
+    @participations = current_user.participations.includes(:forum)
+    @participations.sort {|a,b| a.forum.name <=> b.forum.name }
   end
   
   def create

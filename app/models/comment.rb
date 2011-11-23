@@ -24,7 +24,7 @@ class Comment
   attr_protected :parent_id
   
   def create_participation
-    forum.add_member(user) unless user.member_of?(forum)
+    forum.add_member(user)
   end
   
   def inc_comment_count
