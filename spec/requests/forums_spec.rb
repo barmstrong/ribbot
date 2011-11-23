@@ -14,6 +14,8 @@ describe "Forums" do
     end
     page.should have_content("Welcome")
     u.admin_of?(Forum.last).should == true
+    visit forums_path
+    page.should have_content("Testing1")
   end
   
   it "should allow you to change submission types", :js => true do

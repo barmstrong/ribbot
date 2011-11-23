@@ -7,6 +7,7 @@ class Participation
   
   field :level, type: Integer
   field :banned, type: Boolean, default: false
+  field :hidden, type: Boolean, default: false
   
   belongs_to :forum, index: true
   belongs_to :user, index: true

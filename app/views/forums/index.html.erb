@@ -1,5 +1,5 @@
 <div class='pull-right'>
-  <%= link_to '+ Create A Forum', new_forum_path, :class => "btn" %>
+  <%= link_to '+ Create A Forum', new_forum_path, :class => "btn primary" %>
 </div>
 <h1>My Forums</h1>
 
@@ -9,11 +9,11 @@
     <% @participations.each do |p| %>
       <% f = p.forum %>
       <tr>
-        <td><h2><%= link_to f.name, account_comments_url(:subdomain => f.subdomain) %></h2></td>
-        <td><%= p.level_in_words %></td>
+        <td><h3><%= link_to f.name, account_comments_url(:subdomain => f.subdomain) %></h3></td>
+        <td><p></p><%= p.level_in_words %></td>
         <td>
           <% if p.level == Participation::MEMBER %>
-            <%= link_to "X", hide_participation_path(p), :method => :put %>
+            <%= link_to "Hide", hide_participation_path(p), :method => :put, :class => 'btn' %>
           <% end %>
         </td>
       </tr>

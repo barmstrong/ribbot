@@ -7,7 +7,7 @@ class ForumsController < ApplicationController
   end
   
   def index
-    @participations = current_user.participations.includes(:forum)
+    @participations = current_user.participations.includes(:forum).where(:hidden => false)
     @participations.sort {|a,b| a.forum.name <=> b.forum.name }
   end
   
