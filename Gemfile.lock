@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/TV4/sunspot_mongoid.git
+  revision: c67c8265141988f4443a431c6f4ca65bdc2364f5
+  specs:
+    sunspot_mongoid (0.4.1)
+      mongoid
+      sunspot (>= 1.1.0)
+      sunspot_rails (>= 1.1.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -189,10 +198,6 @@ GEM
       escape (= 0.0.4)
       pr_geohash (~> 1.0)
       rsolr (= 0.12.1)
-    sunspot_mongoid (0.4.1)
-      mongoid
-      sunspot (>= 1.1.0)
-      sunspot_rails (>= 1.1.0)
     sunspot_rails (1.2.1)
       nokogiri
       sunspot (= 1.2.1)
@@ -251,7 +256,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 3.1.4)
   spork (> 0.9.0.rc)
-  sunspot_mongoid (= 0.4.1)
+  sunspot_mongoid (= 0.4.1)!
   sunspot_rails (= 1.2.1)
   sunspot_test (= 0.4.0)
   sunspot_with_kaminari (= 0.1.0)

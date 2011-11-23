@@ -3,4 +3,5 @@ db/*.sqlite3
 log/*.log
 tmp/
 .sass-cache/
-solr/
+solr/data
+sunspot-solr.pid
