@@ -5,4 +5,5 @@ log/sunspot*
 tmp/
 .sass-cache/
 solr/data
+solr/pids
 sunspot-solr.pid

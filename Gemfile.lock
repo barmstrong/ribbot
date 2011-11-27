@@ -212,6 +212,8 @@ GEM
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    sunspot_solr (1.3.0)
+      escape (~> 0.0.4)
     sunspot_test (0.4.0)
       sunspot_rails (>= 1.2.1)
     sunspot_with_kaminari (0.1.0)
@@ -270,6 +272,7 @@ DEPENDENCIES
   spork (> 0.9.0.rc)
   sunspot_mongoid (= 0.4.1)!
   sunspot_rails!
+  sunspot_solr (= 1.3.0)
   sunspot_test (= 0.4.0)
   sunspot_with_kaminari (= 0.1.0)
   twitter-bootstrap-rails (= 1.4.0)

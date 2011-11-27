@@ -19,9 +19,9 @@
         </div>
       </div>
     <% elsif @posts.empty? %>
-      <div class="alert-message block-message info">
+      <div class="alert-message block-message info no-results">
         <p><strong>Your search didn't return an results!</strong></p>
-        <p>Please try a new search or click 'clear'.</p>
+        <p>Please try a new search or <%= link_to 'go back', root_path %>.</p>
       </div>
     <% else %>
     
