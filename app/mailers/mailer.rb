@@ -10,4 +10,5 @@ class Mailer < ActionMailer::Base
     @user = user
     mail :to => user.email, :subject => "Please Verify Your Email Address"
   end
+  
 end

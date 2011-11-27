@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_filter :require_subdomain!, :only => :show
   
   def new
+    @title = "Create a Forum"
     @user = User.new
     @forum = Forum.new
   end
