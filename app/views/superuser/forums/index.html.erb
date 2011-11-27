@@ -5,6 +5,7 @@
     <tr>
       <th>Forum</th>
       <th>Created</th>
+      <th>Posts</th>
     </tr>
   </thead>
   <tbody>
@@ -12,6 +13,7 @@
       <tr>
         <td><%= link_to f.name, root_url(:subdomain => f.subdomain) %></td>
         <td><%= time_ago_in_words f.created_at %> ago</td>
+        <td><%= f.posts.count %></td>
       </tr>
     <% end %>
   </tbody>
