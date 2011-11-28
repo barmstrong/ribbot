@@ -26,14 +26,18 @@ class User
 
   has_secure_password
   
-  validates_uniqueness_of :email
-  validates_presence_of :email
+  validates :email, :presence => true, :uniqueness => true, :email => true
   validates_presence_of :password, :on => :create
   validates_length_of :password, :minimum => 7, :unless => Proc.new {|u| u.password.nil? }
   
   attr_protected :password_digest, :superuser
 
   after_create :send_verification_email
+  before_validation :downcase_email
+  
+  def downcase_email
+    self.email = self.email.downcase
+  end
   
   def generate_token column
     begin
