@@ -45,27 +45,27 @@ class Post
   end
   
   def user_is_not_banned
-    errors.add_to_base("You can no longer participate in this forum") if user.banned_from?(forum)
+    errors.add(:base, "You can no longer participate in this forum") if user.banned_from?(forum)
   end
   
   def url_is_new
     if self.url.present?
       self.url = self.url.downcase
       if post = forum.posts.where(:url => self.url, :created_at.gt => 2.months.ago).first
-        errors.add_to_base("That URL has already been submitted")
+        errors.add(:base, "That URL has already been submitted")
       end
     end
   end
   
   def presence_of_url_or_text
     if self.url.blank? and self.text.blank?
-      errors.add_to_base("Post can't be blank")
+      errors.add(:base, "Post can't be blank")
     end
   end
   
   def format_of_url
     if self.url.present?
-      errors.add_to_base("Invalid URL") unless self.url =~ URI::regexp
+      errors.add(:base, "Invalid URL") unless self.url =~ URI::regexp
     end
   end
   

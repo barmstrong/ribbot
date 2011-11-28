@@ -36,7 +36,7 @@ class Comment
   end
   
   def user_is_not_banned
-    errors.add_to_base("You can no longer participate in this forum") if user.banned_from?(forum)
+    errors.add(:base, "You can no longer participate in this forum") if user.banned_from?(forum)
   end
   
   def update_ranking

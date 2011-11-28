@@ -19,10 +19,12 @@ class VerificationsController < ApplicationController
         user.save!
       end
       path = forums_path
-      if p = current_user.participations.first
+      if current_user and p = current_user.participations.first
         path = root_url(:subdomain => p.forum.subdomain)
       end
       redirect_to path, :notice => "Your account has been verified!"
     end
+  else
+    redirect_to verifications_path, :notice => "Couldn't find that verification code.  Please resend a new one."
   end
 end
