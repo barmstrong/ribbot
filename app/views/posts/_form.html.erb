@@ -11,15 +11,15 @@
   <p>
     <% if current_forum.post_options == Forum::POST_OPTIONS[:text_or_url] %>
       <h5><%= link_to 'Text', '#', :class => 'text-link active' %> or <%= link_to 'URL', '#', :class => 'url-link' %></h5>
-      <%= f.text_field :url, :class => "span8", :style => "display: none;" %>
+      <%= f.text_field :url, :placeholder => 'http://', :class => "span8", :style => "display: none;" %>
       <%= f.text_area :text, :class => "span8" %>
     <% elsif current_forum.post_options == Forum::POST_OPTIONS[:url_or_text] %>
       <h5><%= link_to 'URL', '#', :class => 'url-link active' %> or <%= link_to 'Text', '#', :class => 'text-link' %></h5>
-      <%= f.text_field :url, :class => "span8" %>
+      <%= f.text_field :url, :placeholder => 'http://', :class => "span8" %>
       <%= f.text_area :text, :class => "span8", :style => "display: none;" %>
     <% elsif current_forum.post_options == Forum::POST_OPTIONS[:url_only] %>
       <h5><%= f.label :url, 'URL' %></h5>
-      <%= f.text_field :url, :class => "span8" %>
+      <%= f.text_field :url, :placeholder => 'http://', :class => "span8" %>
     <% elsif current_forum.post_options == Forum::POST_OPTIONS[:text_only] %>
       <h5><%= f.label :text %></h5>
       <%= f.text_area :text, :class => "span8" %>
