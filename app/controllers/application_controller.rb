@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   
   def get_current_theme
     if params[:theme_preview].present?
-      Theme.find(params[:theme_preview])
+      Theme.where(:_id => params[:theme_preview]).first
     elsif current_forum.present?
       current_forum.theme
     else
