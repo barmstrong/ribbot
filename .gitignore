@@ -1,9 +1,9 @@
 .bundle
 db/*.sqlite3
-log/*.log
-log/sunspot*
+log/*
 tmp/
 .sass-cache/
 solr/data
 solr/pids
 sunspot-solr.pid
+.DS_Store
