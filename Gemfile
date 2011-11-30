@@ -23,6 +23,7 @@ gem 'exception_notification_rails3', '1.2.0', :require => 'exception_notifier'
 gem 'mongoid_rails_migrations',      '0.0.14'
 gem 'dalli',                         '1.1.3'
 
+
 group :assets do
   gem 'sass-rails', "  ~> 3.1.4"
   gem 'coffee-rails', "~> 3.1.1"
