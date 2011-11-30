@@ -1,8 +1,7 @@
 module Account::ThemesHelper
-  def theme_image theme
-    #image_tag "http://img.bitpixels.com/getthumbnail?code=41212&size=200&url=http://test.ribbot.com?theme_preview=#{theme.id}", :size => "200x200"
-    #image_tag "http://images.sitethumbshot.com/?size=M&key=eb53bd1ae51f7a986ab450e67979cf27&url=http://test.ribbot.com?theme_preview=#{theme.id}", :size => "200x150"
+  def theme_image theme, width=210
+    height = (width.to_f * 0.8).round
     url = u("http://support.ribbot.com/?theme_preview=#{theme.id}")
-    image_tag "http://api.thumbalizr.com/?url=#{url}&width=210"
+    image_tag "http://api.thumbalizr.com/?url=#{url}&width=#{width}", :size => "#{width}x#{height}"
   end
 end
