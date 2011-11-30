@@ -1,0 +1,28 @@
+<div class="row">
+  <%= render 'shared/sidebar' %>
+  
+  <div class="span12">
+    
+    <p><%= link_to '&laquo; back to all themes'.html_safe, account_themes_path %></p>
+    
+    <h2><%= @theme.name %></h2>
+    <%= render :partial => 'shared/byline', :locals => {:comment_or_post => @theme, :voting => true } %>
+    
+    <p>
+      <%= link_to "Preview", root_path(:theme_preview => @theme.id), :class => 'btn', :target => '_blank' %>
+      <% if current_forum.theme == @theme %>
+        <%= link_to "Uninstall", uninstall_account_themes_path, :class => 'btn', :method => :post %>
+      <% else %>
+        <%= link_to "Install", install_account_theme_path(@theme), :class => 'btn', :method => :post %>
+      <% end %>
+      <%= link_to "Edit Theme", edit_account_theme_path(@theme), :class => 'btn' if can?(:edit, @theme) %>
+      <%= link_to "Delete Theme", account_theme_path(@theme), :method => :delete, :class => 'btn', :confirm => "Are you sure you want to delete this theme?" if can?(:destroy, @theme) %>
+      <%= link_to "Clone Theme", new_account_theme_path(:clone => @theme.id), :class => 'btn' %>
+    </p>
+    
+    <p>
+      <%= theme_image(@theme) %>
+      <%#= image_tag('http://placehold.it/500x357') %>
+    </p>
+  </div>
+</div>

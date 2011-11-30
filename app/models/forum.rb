@@ -27,6 +27,7 @@ class Forum
   has_many :posts
   has_many :participations
   has_many :tags
+  belongs_to :theme
   
   validates_presence_of :subdomain, :name
   validates_uniqueness_of :subdomain, :case_sensitive => false

@@ -20,6 +20,7 @@ Ribbot::Application.routes.draw do
       put :hide
     end
   end
+  resources :themes
   
   namespace :account do
     resources :comments
@@ -30,7 +31,10 @@ Ribbot::Application.routes.draw do
     resources :tags do
       post :sort, :on => :collection
     end
-    resources :themes
+    resources :themes do
+      post :install, :on => :member
+      post :uninstall, :on => :collection
+    end
   end
   
   namespace :superuser do

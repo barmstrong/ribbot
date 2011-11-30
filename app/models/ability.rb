@@ -8,13 +8,15 @@ class Ability
     if user.superuser?
       can :manage, :all
     end
+    
+    can :view, Theme, :public => true
 
     can :manage, Forum do |forum|
       user.admin_of?(forum)
     end
     
     can :manage, User, :_id => user.id
-    can :manage, [Comment, Participation, Post], :user_id => user.id
+    can :manage, [Comment, Participation, Post, Theme], :user_id => user.id
     
     # Admin actions
     can :destroy, Comment do |c|

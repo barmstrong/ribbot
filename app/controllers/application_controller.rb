@@ -16,6 +16,21 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_forum
   
+  def current_theme
+    @current_theme ||= get_current_theme
+  end
+  helper_method :current_theme
+  
+  def get_current_theme
+    if params[:theme_preview].present?
+      Theme.find(params[:theme_preview])
+    elsif current_forum.present?
+      current_forum.theme
+    else
+      nil
+    end
+  end
+  
   def require_subdomain!
     if current_forum.nil?
       redirect_to forums_url(:subdomain => false)

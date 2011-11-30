@@ -30,6 +30,7 @@ describe "Comments" do
     expect { create_post :user => @user, :forum => @forum                    }.to raise_error
     expect { create_comment :user => @user, :forum => @forum, :post => @post }.to raise_error
     
+    visit account_users_path
     within("#participation_#{p.id}") do
       click_on 'Unban'
     end

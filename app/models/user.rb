@@ -23,6 +23,7 @@ class User
   has_many :participations
   has_many :posts
   has_many :comments
+  has_many :themes
 
   has_secure_password
   
