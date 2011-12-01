@@ -16,6 +16,9 @@ class User
   field :password_reset_token, :type => String
   field :password_reset_sent_at, :type => DateTime
   field :rate_limit, :type => Integer
+  field :website, :type => String
+  field :location, :type => String
+  field :about, :type => String
 
   index :email, unique: true
   index :verification_token, unique: true
@@ -60,7 +63,11 @@ class User
   end
   
   def admin_of? forum
-    Participation.exists?(:conditions => {:forum_id => forum.id, :user_id => self.id, :level => Participation::ADMIN})
+    Participation.exists?(:conditions => {:forum_id => forum.id, :user_id => self.id, :level.lte => Participation::ADMIN})
+  end
+  
+  def owner_of? forum
+    Participation.exists?(:conditions => {:forum_id => forum.id, :user_id => self.id, :level.lte => Participation::OWNER})
   end
   
   def banned_from? forum

@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     if @user.valid? and @forum.valid?
       @user.save!
       @forum.save!
-      @forum.add_admin(@user)
+      @forum.add_owner(@user)
       signin! @user, "Thanks for creating an account!"
     else
       try_login or render :new

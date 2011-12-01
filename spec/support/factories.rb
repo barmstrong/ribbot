@@ -9,7 +9,7 @@ end
 def create_user_with_forum p1={}, p2={}
   u = create_user(p1)
   f = create_forum(p2)
-  f.add_admin(u)
+  f.add_owner(u)
   [u,f]
 end
 

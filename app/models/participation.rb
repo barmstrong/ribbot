@@ -2,7 +2,8 @@ class Participation
   include Mongoid::Document
   include Mongoid::Timestamps
   
-  ADMIN = 0
+  OWNER = 0
+  ADMIN = 1
   MEMBER = 10
   
   field :level, type: Integer
@@ -18,6 +19,7 @@ class Participation
   
   def level_in_words
     case level
+    when OWNER then "Owner"
     when ADMIN then "Admin"
     when MEMBER then "Member"
     else raise "invalid level"

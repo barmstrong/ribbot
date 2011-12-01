@@ -7,18 +7,24 @@ class ForumsController < ApplicationController
   end
   
   def index
-    @participations = current_user.participations.includes(:forum).where(:hidden => false)
-    @participations.sort {|a,b| a.forum.name <=> b.forum.name }
+    @participations = current_user.participations.includes(:forum).where(:hidden => false).asc(:level)
   end
   
   def create
     @forum = Forum.new(params[:forum])
     if @forum.save
-      @forum.add_admin(current_user)
+      @forum.add_owner(current_user)
       redirect_to root_url(:subdomain => @forum.subdomain), :notice => "Forum created!"
     else
       render :new
     end
+  end
+  
+  def destroy
+    @forum = Forum.find(params[:id])
+    authorize! :destroy, @forum
+    @forum.destroy
+    redirect_to forums_path, :notice => "Forum deleted."
   end
   
 end

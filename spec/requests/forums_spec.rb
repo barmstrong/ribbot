@@ -55,4 +55,25 @@ describe "Forums" do
     page.should_not have_css('#post_url')
     find('#post_text').should be_visible
   end
+  
+  it "should only let owner delete forum" do
+    u, f = create_user_with_forum
+    signin_as u
+    set_subdomain f.subdomain
+    p = u.participations.first
+    
+    p.update_attribute :level, Participation::ADMIN
+    visit account_ownership_path
+    assert_no_difference "Forum.count" do
+      find('.delete-forum').click
+    end
+    
+    p.update_attribute :level, Participation::OWNER
+    visit account_ownership_path
+    assert_difference "Forum.count", -1 do
+      find('.delete-forum').click
+    end
+    visit forums_path
+    
+  end
 end

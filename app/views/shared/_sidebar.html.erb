@@ -2,14 +2,16 @@
   <h5 class="<%= 'active' if controller_name == 'comments' %>"><%= link_to current_forum.comments_label, account_comments_path %></h5>
   <h5 class="<%= 'active' if controller_name == 'posts' %>"><%= link_to current_forum.posts_label, account_posts_path %></h5>
   <h5 class="<%= 'active' if controller_name == 'profiles' %>"><%= link_to 'Profile', account_profile_path %></h5>
-  <h5><%= link_to 'Forums', forums_url(:subdomain => false) %></h5>
 
   <% if can? :edit, current_forum %>
     <hr/>
-    <h6>Admin Only</h6>
+    <h6>Admin Options</h6>
     <h5 class="<%= 'active' if controller_name == 'settings' %>"><%= link_to "Settings", account_settings_path %></h5>
     <h5 class="<%= 'active' if controller_name == 'users' %>"><%= link_to "Users", account_users_path %></h5>
     <h5 class="<%= 'active' if controller_name == 'tags' %>"><%= link_to "Tags", account_tags_path %></h5>
     <h5 class="<%= 'active' if controller_name == 'themes' %>"><%= link_to "Themes", account_themes_path %></h5>
+    <% if current_user.owner_of?(current_forum) %>
+      <h5 class="<%= 'active' if controller_name == 'ownerhip' %>"><%= link_to "Ownership", account_ownership_path %></h5>
+    <% end %>
   <% end %>
 </div>

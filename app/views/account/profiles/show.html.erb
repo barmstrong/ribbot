@@ -2,7 +2,7 @@
   <%= render 'shared/sidebar' %>
   
   <div class="span12">
-    <%= form_for current_user, :url => account_profile_path do |f| %>
+    <%= form_for current_user, :url => account_profile_path, :html => {:class => "user-form"} do |f| %>
       <div class="clearfix">
         <div class="input"><h3>Edit Profile</h3></div>
       </div>
@@ -18,9 +18,30 @@
         <%= f.label :email %>
         <div class="input"><%= f.text_field :email %></div>
       </div>
+      
+      <div class="clearfix">
+        <%= label_tag :photo, 'Photo' %>
+        <div class="input"><%= link_to 'Change here', "http://www.gravatar.com/", :target => "_blank" %></div>
+      </div>
+      
+      <div class="clearfix">
+        <%= f.label :location %>
+        <div class="input"><%= f.text_field :location %></div>
+      </div>
+      
+      <div class="clearfix">
+        <%= f.label :website %>
+        <div class="input"><%= f.text_field :website %></div>
+      </div>
+      
+      <div class="clearfix">
+        <%= f.label :about, 'About me' %>
+        <div class="input"><%= f.text_area :about, :class => "span7" %></div>
+      </div>
 
       <div class="actions">
         <%= submit_tag "Update Profile", :class => "btn primary", :disable_with => "Updating..." %>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; You can view your public profile <%= link_to 'here', user_path(current_user), :target => "_blank" %>.
       </div>
     <% end %>
     

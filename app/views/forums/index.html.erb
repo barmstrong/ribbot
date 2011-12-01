@@ -8,13 +8,15 @@
   <tbody>
     <% @participations.each do |p| %>
       <% f = p.forum %>
+      <% next if f.nil? %>
       <tr>
-        <td><h3><%= link_to f.name, account_comments_url(:subdomain => f.subdomain) %></h3></td>
+        <td><h3><%= link_to f.name, root_url(:subdomain => f.subdomain) %></h3></td>
         <td><p></p><%= p.level_in_words %></td>
         <td>
           <% if p.level == Participation::MEMBER %>
             <%= link_to "Hide", hide_participation_path(p), :method => :put, :class => 'btn' %>
           <% end %>
+          <%= link_to "Edit", account_settings_url(:subdomain => f.subdomain), :class => 'btn' if can?(:edit, f) %>
         </td>
       </tr>
     <% end %>

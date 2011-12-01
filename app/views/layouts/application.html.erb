@@ -38,13 +38,22 @@
         <ul class="nav secondary-nav">
           <% if signed_in? %>
             <% if current_forum %>
-              <li class="<%= 'active' if current_namespace == 'Account' %>"><%= link_to current_user.name, account_comments_path %></li>
+              <li class="dropdown" data-dropdown="dropdown">              
+                <%= link_to current_user.name, '#', :class => "dropdown-toggle" %>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "My Profile", account_comments_path %></li>
+                  <li><%= link_to "My Forums", account_comments_url(:subdomain => false) %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to "Sign Out", signout_path, :method => :delete %></li>
+                </ul>
+              </li>
             <% else %>
-              <li><%= link_to current_user.name, forums_path %></li>
+              <li class="<%= 'active' if controller_name == 'forums' %>"><%= link_to "My Forums", forums_path %></li>
+              <li><%= link_to "Sign Out", signout_path, :method => :delete %></li>
             <% end %>
-            <li><%= link_to "Sign Out", signout_path, :method => :delete %></li>
           <% else %>
-            <li class="<%= "active" if signin_active? %>"><%= link_to "Sign In", signin_path %></li>
+            <li class="<%= "active" if signin_active? %>"><%= link_to "Sign In or Sign Up", signin_path %></li>
+
           <% end %>
         </ul>
       </div>

@@ -1,2 +1,24 @@
-<h2><%= @user.name %></h2>
-<%= image_tag @user.gravatar_url(:size => 200) %>
+<table class="border-less">
+  <tr>
+    <td></td>
+    <td><h2><%= @user.name %></h2></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><strong>Signed Up</strong></td>
+    <td><%= time_ago_in_words @user.created_at %> ago</td>
+    <td rowspan='10'><%= image_tag @user.gravatar_url(:size => 200) %></td>
+  </tr>
+  <tr>
+    <td><strong>Location</strong></td>
+    <td><%= current_user.location %></td>
+  </tr>
+  <tr>
+    <td><strong>Website</strong></td>
+    <td><%= link_to current_user.website, current_user.website, :rel => "nofollow" if current_user.website.present? %></td>
+  </tr>
+  <tr>
+    <td><strong>About</strong></td>
+    <td><%= simple_format current_user.about %></td>
+  </tr>
+</table>

@@ -1,4 +1,4 @@
-jQuery ->
+jQuery ->  
   setTimeout ->
     $('.right-sidebar, .left-sidebar').each (i, e) ->
       row_height = $(e).parent('.row').height()

@@ -25,7 +25,7 @@ class Forum
   index :subdomain, unique: true
   
   has_many :posts
-  has_many :participations
+  has_many :participations, :dependent => :destroy
   has_many :tags
   belongs_to :theme
   
@@ -51,16 +51,20 @@ class Forum
     end
   end
   
-  def add_admin user
-    participations.create!(:user => user, :level => Participation::ADMIN)
-  end
-  
   def add_member user
     if p = participations.where(:user_id => user.id).first
       p.update_attribute :hidden, false if p.hidden?
     else
       participations.create!(:user => user, :level => Participation::MEMBER)
     end
+  end
+  
+  def add_admin user
+    participations.create!(:user => user, :level => Participation::ADMIN)
+  end
+  
+  def add_owner user
+    participations.create!(:user => user, :level => Participation::OWNER)
   end
   
   def downcase_subdomain
