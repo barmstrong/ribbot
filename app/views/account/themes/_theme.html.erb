@@ -2,7 +2,6 @@
   <div class="pull-left">
     <%= link_to account_theme_path(theme) do %>
       <%= theme_image(theme) %>
-      <%#= image_tag('http://placehold.it/210x150') %>
       <span class="pull-right"><%= theme.votes_point %> point<%= 's' unless theme.votes_point == 1 %></span>
       <%= truncate theme.name, :lenght => 20 %>
     <% end %>

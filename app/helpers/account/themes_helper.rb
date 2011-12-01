@@ -1,11 +1,13 @@
 module Account::ThemesHelper
-  def theme_image theme, width=210
-    height = (width.to_f * 0.8).round
-    if Rails.env.production?
+  Url2png::Config.public_key = 'P4ED717C89A831'
+  Url2png::Config.shared_secret = 'SCFD8EF851C0B1'
+  
+  def theme_image theme, size="210x150"
+    if true or Rails.env.production?
       url = "http://support.ribbot.com/?theme_preview=#{theme.id}"
-      image_tag "http://api.thumbalizr.com/?url=#{u url}&width=#{width}&api_key=b2b404b2204583aa14fb20c214003453", :size => "#{width}x#{height}"
+      site_image_tag(url, :size => size).html_safe
     else
-      image_tag "http://placehold.it/#{width}x#{height}", :size => "#{width}x#{height}"
+      image_tag "http://placehold.it/#{size}", :size => size
     end
   end
 end
