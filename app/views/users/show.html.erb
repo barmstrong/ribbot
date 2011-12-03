@@ -11,14 +11,14 @@
   </tr>
   <tr>
     <td><strong>Location</strong></td>
-    <td><%= current_user.location %></td>
+    <td><%= @user.location %></td>
   </tr>
   <tr>
     <td><strong>Website</strong></td>
-    <td><%= link_to current_user.website, current_user.website, :rel => "nofollow" if current_user.website.present? %></td>
+    <td><%= link_to @user.website, @user.website, :rel => "nofollow" if @user.website.present? %></td>
   </tr>
   <tr>
     <td><strong>About</strong></td>
-    <td><%= simple_format current_user.about %></td>
+    <td><%= simple_format @user.about %></td>
   </tr>
 </table>
