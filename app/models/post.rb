@@ -6,10 +6,12 @@ class Post
   include Sunspot::Mongoid
   include Mongo::Voteable
   include GravityRanking
+  include MarkdownProcessor
   
   field :title, type: String
   field :url, type: String, index: true
   field :text, type: String
+  field :html, type: String
   field :ranking, type: Float, default: 0.0
   field :comment_count, type: Integer, default: 0
 
@@ -26,6 +28,7 @@ class Post
   
   voteable self, :up => +1, :down => -1
   
+  before_save  :process_markdown
   after_create :create_participation
   after_save    :update_post_counts
   after_destroy :update_post_counts
@@ -53,7 +56,7 @@ class Post
     if self.url.present?
       self.url = self.url.downcase
       if post = forum.posts.where(:url => self.url, :created_at.gt => 2.months.ago).first
-        errors.add(:base, "That URL has already been submitted")
+        errors.add(:base, "That URL has already been submitted") unless post == self
       end
     end
   end

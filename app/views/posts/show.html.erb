@@ -6,7 +6,7 @@
   <% end %>
   
   <%= render :partial => 'shared/byline', :locals => {:comment_or_post => @post, :voting => true, :show_tags => true} %>
-  <%= simple_format @post.text %>
+  <%= @post.html.html_safe %>
   <p>
     <% if can? :edit, @post %>
       <%= link_to 'edit', edit_post_path(@post) %>

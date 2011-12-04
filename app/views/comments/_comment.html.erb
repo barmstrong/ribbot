@@ -12,7 +12,7 @@
     <% if comment.deleted %>
       <p><small>[deleted]</small></p>
     <% else %>
-      <%= simple_format comment.text %>
+      <%= comment.html.html_safe %>
   
       <% if show_links %>
         <p>

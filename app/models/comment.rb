@@ -3,8 +3,10 @@ class Comment
   include Mongoid::Timestamps
   include Mongo::Voteable
   acts_as_nested_set
+  include MarkdownProcessor
   
   field :text, type: String
+  field :html, type: String
   field :deleted, type: Boolean, default: false
   field :ranking, type: Float, default: 0.0
 
@@ -17,6 +19,7 @@ class Comment
   
   voteable self, :up => +1, :down => -1
   
+  before_save  :process_markdown
   after_create  :create_participation
   after_create  :inc_comment_count
   after_destroy :dec_comment_count
