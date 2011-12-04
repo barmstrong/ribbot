@@ -17,7 +17,7 @@ class Post
 
   belongs_to :user, index: true
   belongs_to :forum, index: true
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_and_belongs_to_many :tags, inverse_of: nil, index: true
 
   validates_presence_of :title, :user, :forum
