@@ -22,7 +22,7 @@ gem 'aws-ses',                       '0.4.4', :require => 'aws/ses'
 gem 'exception_notification_rails3', '1.2.0', :require => 'exception_notifier'
 gem 'mongoid_rails_migrations',      '0.0.14'
 gem 'dalli',                         '1.1.3'
-gem 'url2png',                       '0.0.6'
+gem 'url2png',                       '0.1.1'
 gem 'redcarpet',                     '2.0.0'
 
 
