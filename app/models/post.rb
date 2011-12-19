@@ -28,8 +28,8 @@ class Post
   
   voteable self, :up => +1, :down => -1
   
-  before_save  :process_markdown
-  after_create :create_participation
+  before_save   :process_markdown
+  after_create  :create_participation
   after_save    :update_post_counts
   after_destroy :update_post_counts
   
