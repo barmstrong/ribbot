@@ -21,6 +21,7 @@ class Ability
     
     can :manage, User, :_id => user.id
     can :manage, [Comment, Participation, Post, Theme], :user_id => user.id
+    can [:show, :install, :uninstall], Theme, :public => true
     
     # Admin actions
     can :destroy, Comment do |c|
