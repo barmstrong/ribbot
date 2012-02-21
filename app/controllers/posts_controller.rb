@@ -25,7 +25,15 @@ class PostsController < ApplicationController
         paginate :page => params[:page]
       end
     else
-      @posts = current_forum.posts.desc(:ranking).with_tags(params[:tags], current_forum).page(params[:page])
+      @posts = current_forum.posts.with_tags(params[:tags], current_forum).page(params[:page])
+      
+      if params[:sort] == 'top'
+        @posts = @posts.desc(:votes_point)
+      elsif params[:sort] == 'latest'
+        @posts = @posts.desc(:created_at)
+      else
+        @posts = @posts.desc(:ranking)
+      end            
     end
   end
   

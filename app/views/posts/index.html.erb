@@ -25,13 +25,23 @@
       </div>
     <% else %>
     
+
+    
+      
+    <% if params[:search].present? %>
       <table class="zebra-striped">
-        <% if params[:search].present? %>
-          <%= render @posts.results %>
-        <% else %>
-          <%= render @posts %>
-        <% end %>
+        <%= render @posts.results %>
       </table>
+    <% else %>
+      <ul class="tabs">
+        <li class="<%= 'active' if params[:sort].blank? %>"><%= link_to 'Popular', posts_path %></li>
+        <li class="<%= 'active' if params[:sort] == 'top' %>"><%= link_to 'Top', posts_path(:sort => 'top') %></li>
+        <li class="<%= 'active' if params[:sort] == 'latest' %>"><%= link_to 'Latest', posts_path(:sort => 'latest') %></li>
+      </ul>
+      <table class="zebra-striped">
+        <%= render @posts %>
+      </table>
+    <% end %>
       
       <%= paginate @posts %>
     <% end %>
