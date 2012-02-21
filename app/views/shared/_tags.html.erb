@@ -4,9 +4,9 @@
   <% current_names = params[:tags].split(',') rescue [] %>
   <% current_forum.tags.each do |t| %>
     <% if current_names.include?(t.name) %>
-      <%= link_to t.name, root_path, :class => "tag active" %>
+      <%= link_to t.name, root_path(request.query_parameters.merge(:tags => nil)), :class => "tag active" %>
     <% else %>
-      <%= link_to t.name, root_path(:tags => t.name), :class => "tag" %>
+      <%= link_to t.name, root_path(request.query_parameters.merge(:tags => t.name)), :class => "tag" %>
     <% end %>
   <% end %>
 <% end %>

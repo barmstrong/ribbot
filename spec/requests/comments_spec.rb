@@ -40,11 +40,12 @@ describe "Comments" do
         page.should_not have_css("#new_comment")
         find(".reply-link").click
         page.should have_css("#new_comment")
-        find('#comment_text').set("reply comment")
+        find('#comment_text').set("this is a reply")
         find("form .btn.primary").click
       end
+      page.should have_content("this is a reply")
       visit post_path(@p)
-      page.should have_content("reply comment")
+      page.should have_content("this is a reply")
     end
     c = Comment.last
     c.parent.should == @c

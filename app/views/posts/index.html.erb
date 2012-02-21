@@ -31,9 +31,9 @@
       </table>
     <% else %>
       <ul class="tabs">
-        <li class="<%= 'active' if params[:sort].blank? %>"><%= link_to 'Popular', posts_path %></li>
-        <li class="<%= 'active' if params[:sort] == 'top' %>"><%= link_to 'Top', posts_path(:sort => 'top') %></li>
-        <li class="<%= 'active' if params[:sort] == 'latest' %>"><%= link_to 'Latest', posts_path(:sort => 'latest') %></li>
+        <li class="<%= 'active' if params[:sort].blank? %>"><%= link_to 'Popular', posts_path(request.query_parameters.merge(:sort => nil)) %></li>
+        <li class="<%= 'active' if params[:sort] == 'top' %>"><%= link_to 'Top', posts_path(request.query_parameters.merge(:sort => 'top')) %></li>
+        <li class="<%= 'active' if params[:sort] == 'latest' %>"><%= link_to 'Latest', posts_path(request.query_parameters.merge(:sort => 'latest')) %></li>
       </ul>
       <table class="zebra-striped">
         <%= render @posts %>
@@ -43,7 +43,7 @@
       <%= paginate @posts %>
     <% end %>
   </div>
-  <div class="span4" style="padding-top: 32px;">
+  <div class="span4" style="padding-top: 68px;">
     <%= render 'shared/tags' %>
     <br/><br/>
     <%= render 'shared/ads' %>
