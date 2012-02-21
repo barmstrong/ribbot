@@ -21,4 +21,16 @@
     <td><strong>About</strong></td>
     <td><%= simple_format @user.about %></td>
   </tr>
+  <tr>
+    <td><strong>Forums Created</strong></td>
+    <td>
+      <% if @forums.present? %>
+        <% @forums.each do |f| %>
+          <p><%= link_to f.name, root_path(:subdomain => f.subdomain) %>
+        <% end %>
+      <% else %>
+        None yet.
+      <% end %>
+    </td>
+  </tr>
 </table>

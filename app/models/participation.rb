@@ -15,7 +15,8 @@ class Participation
     
   validates_presence_of :level, :forum, :user
   
-  scope :admins, where(:level => ADMIN)
+  scope :owner, where(:level => OWNER)
+  scope :admin, where(:level => ADMIN)
   
   def level_in_words
     case level

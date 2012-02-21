@@ -36,6 +36,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     raise CanCan::AccessDenied.new("Not authorized!", :view, User) unless @user.member_of?(current_forum)
+    participations = @user.participations.owner
+    @forums = Forum.where(:_id.in => participations.collect{|p| p.forum_id}).asc(:name)
   end
   
   def password_reset
