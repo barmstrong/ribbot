@@ -25,7 +25,7 @@ class PostsController < ApplicationController
         paginate :page => params[:page]
       end
     else
-      @posts = current_forum.posts.with_tags(params[:tags], current_forum).page(params[:page])
+      @posts = current_forum.posts.with_tags(params[:tags], current_forum).where(:'votes.point'.gt => -5).page(params[:page])
       
       if params[:sort] == 'top'
         @posts = @posts.desc('votes.point')
@@ -44,7 +44,7 @@ class PostsController < ApplicationController
       return
     end
     @comment = @post.comments.new
-    @comments = @post.comments.asc(:lft).page(params[:page])
+    @comments = @post.comments.asc(:lft).where(:'votes.point'.gt => -5).page(params[:page])
   end
   
   def edit

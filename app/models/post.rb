@@ -14,6 +14,9 @@ class Post
   field :html, type: String
   field :ranking, type: Float, default: 0.0
   field :comment_count, type: Integer, default: 0
+  
+  index :ranking
+  index :'votes.point'
 
   belongs_to :user, index: true
   belongs_to :forum, index: true

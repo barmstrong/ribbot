@@ -9,6 +9,9 @@ class Comment
   field :html, type: String
   field :deleted, type: Boolean, default: false
   field :ranking, type: Float, default: 0.0
+  
+  index :ranking
+  index :'votes.point'
 
   belongs_to :user, index: true
   belongs_to :post, index: true
