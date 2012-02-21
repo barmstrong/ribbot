@@ -89,6 +89,11 @@ GEM
     guard-spork (0.3.1)
       guard (>= 0.8.4)
       spork (>= 0.8.4)
+    heroku (2.20.1)
+      launchy (>= 0.3.2)
+      rest-client (~> 1.6.1)
+      rubyzip
+      term-ansicolor (~> 1.0.5)
     hike (1.2.1)
     i18n (0.6.0)
     jquery-rails (1.0.17)
@@ -169,6 +174,8 @@ GEM
     rdoc (3.11)
       json (~> 1.4)
     redcarpet (2.0.0)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rsolr (1.0.6)
       builder (>= 2.1.2)
     rspec (2.7.0)
@@ -215,6 +222,7 @@ GEM
     sunspot_with_kaminari (0.1.0)
       kaminari
       sunspot_rails
+    term-ansicolor (1.0.7)
     therubyracer (0.9.9)
       libv8 (~> 3.3.10)
     thor (0.14.6)
@@ -257,6 +265,7 @@ DEPENDENCIES
   growl (= 1.0.3)
   guard-rspec (= 0.5.0)
   guard-spork (= 0.3.1)
+  heroku (= 2.20.1)
   jquery-rails (= 1.0.17)
   kaminari (= 0.12.4)
   launchy (= 2.0.5)
