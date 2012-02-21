@@ -42,7 +42,10 @@
                 <%= link_to current_user.name, '#', :class => "dropdown-toggle" %>
                 <ul class="dropdown-menu">
                   <li><%= link_to "My Profile", account_comments_path %></li>
-                  <li><%= link_to "My Forums", forums_url(:subdomain => false) %></li>
+                  <% if can? :edit, current_forum %>
+                    <li><%= link_to "Forum Settings", account_settings_path %></li>
+                  <% end %>
+                  <li><%= link_to "Leave Forum", forums_url(:subdomain => false) %></li>
                   <li class="divider"></li>
                   <li><%= link_to "Sign Out", signout_path, :method => :delete %></li>
                 </ul>
