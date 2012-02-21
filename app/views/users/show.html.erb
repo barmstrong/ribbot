@@ -26,7 +26,7 @@
     <td>
       <% if @forums.present? %>
         <% @forums.each do |f| %>
-          <p><%= link_to f.name, root_path(:subdomain => f.subdomain) %>
+          <p><%= link_to f.name, root_url(:subdomain => f.subdomain) %>
         <% end %>
       <% else %>
         None yet.
