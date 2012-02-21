@@ -28,7 +28,7 @@ class PostsController < ApplicationController
       @posts = current_forum.posts.with_tags(params[:tags], current_forum).page(params[:page])
       
       if params[:sort] == 'top'
-        @posts = @posts.desc(:votes_point)
+        @posts = @posts.desc('votes.point')
       elsif params[:sort] == 'latest'
         @posts = @posts.desc(:created_at)
       else
