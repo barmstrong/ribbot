@@ -8,11 +8,18 @@ class VotesController < ApplicationController
   
   def create
     voteable = params[:dom_id].to_model
+    allowed = true
     
-    @error = nil
-    @error = "You are voting too fast.  Please wait a bit." if current_user.over_rate_limit?
+    if current_user.over_rate_limit?
+      allowed = false
+      @error = "You are voting too fast.  Please wait a bit."
+    end
     
-    if @error.nil? and !current_user.banned_from?(voteable.forum)
+    if voteable.respond_to?(:forum) and current_user.banned_from?(voteable.forum)
+      allowed = false
+    end
+    
+    if allowed
       if params[:toggle] == 'on'
         current_user.vote(voteable, params[:direction].to_sym)
       elsif params[:toggle] == 'off'

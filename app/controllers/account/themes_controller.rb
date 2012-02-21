@@ -15,7 +15,7 @@ class Account::ThemesController < ApplicationController
   
   def index
     authorize! :edit, current_forum
-    @themes = Theme.where(:public => true).desc(:ranking).page(params[:page])
+    @themes = Theme.where(:public => true).desc('votes.point').page(params[:page])
   end
   
   def create

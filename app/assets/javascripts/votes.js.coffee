@@ -2,6 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+voteable_classes = '.post, .comment, .theme'
+
 jQuery ->
   $('.upvote, .downvote').live 'click', (e) ->
     e.preventDefault()
@@ -14,7 +16,7 @@ jQuery ->
     
 changePoints = (e, points) ->
   points += updateSibling(e)
-  span = e.parents('.post, .comment').find('.points')
+  span = e.parents(voteable_classes).find('.points')
   span.html(points + parseInt(span.html()))
   postToServer(e)
 
@@ -33,7 +35,7 @@ updateSibling = (e) ->
     
 postToServer = (e) ->
   $.post e.attr('href'), {
-    dom_id:    e.parents('.post, .comment').attr('id'),
+    dom_id:    e.parents(voteable_classes).attr('id'),
     direction: if e.hasClass('upvote') then 'up' else 'down',
     toggle:    if e.hasClass('on') then 'on' else 'off'
   }
