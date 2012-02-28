@@ -55,7 +55,7 @@ class Forum
   
   def add_or_remove_custom_domain
     if custom_domain_changed? and Rails.env.production?
-      heroku_client = Heroku::Client.new(ENV['HEROKU_EMAIL'], ENV['HEROKU_PASSWORD'])
+      heroku_client = Heroku::Client.new(ENV['HEROKU_USER'], ENV['HEROKU_PASSWORD'])
       heroku_client.remove_domain('ribbot', custom_domain_was) if custom_domain_was.present?
       heroku_client.add_domain('ribbot', custom_domain) if custom_domain.present?
     end
