@@ -12,6 +12,7 @@ class Forum
   field :subdomain, type: String
   field :name, type: String
   field :description, type: String
+  field :custom_domain, type: String
   
   field :post_options, type: Integer, default: POST_OPTIONS[:text_or_url]
   
@@ -23,6 +24,7 @@ class Forum
   field :new_comment_label, type: String, default: "Add Comment"
   
   index :subdomain, unique: true
+  index :custom_domain, unique: true
   
   has_many :posts
   has_many :participations, :dependent => :destroy
@@ -31,18 +33,32 @@ class Forum
   
   validates_presence_of :subdomain, :name
   validates_uniqueness_of :subdomain, :case_sensitive => false
+  validates_uniqueness_of :custom_domain, :case_sensitive => false, :allow_blank => true
   validate :subdomain_uses_valid_characters
   validate :subdomain_uses_valid_name
   
   before_validation :set_default_name
-  before_save :downcase_subdomain
+  before_save :clean_params
+  before_save :add_or_remove_custom_domain
   
   def subdomain_uses_valid_characters
-    errors.add(:subdomain, "can only use numbers and letters") if subdomain =~ /[^a-z0-9]/i
+    errors.add(:subdomain, "can only use numbers and letters") if subdomain =~ /[^a-z0-9\-]/i
+  end
+  
+  def custom_domain_uses_valid_characters
+    errors.add(:custom_domain, "should be in the format www.example.com or forum.example.com") if custom_domain.present? and custom_domain =~ /[^a-z0-9\-\.]/i
   end
   
   def subdomain_uses_valid_name
     errors.add(:subdomain, "is already taken") if ['blog','legal','www','help','contact','jobs','about'].include?(subdomain.downcase)
+  end
+  
+  def add_or_remove_custom_domain
+    if custom_domain_changed? and Rails.env.production?
+      heroku_client = Heroku::Client.new(ENV['HEROKU_EMAIL'], ENV['HEROKU_PASSWORD'])
+      heroku_client.remove_domain('ribbot', custom_domain_was) if custom_domain_was.present?
+      heroku_client.add_domain('ribbot', custom_domain) if custom_domain.present?
+    end
   end
   
   def set_default_name
@@ -67,7 +83,8 @@ class Forum
     participations.create!(:user => user, :level => Participation::OWNER)
   end
   
-  def downcase_subdomain
+  def clean_params
     self.subdomain = subdomain.downcase
+    self.custom_domain = custom_domain.downcase if custom_domain.present?
   end
 end

@@ -1,5 +1,5 @@
 class ThemesController < ApplicationController
-  before_filter :require_subdomain!
+  before_filter :require_current_forum!
   
   def show
     @theme = Theme.find(params[:id])

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!, :only => :password_reset
-  before_filter :require_subdomain!, :only => :show
+  before_filter :require_current_forum!, :only => :show
   
   def new
     @title = "Create a Forum"

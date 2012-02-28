@@ -1,5 +1,5 @@
 class ForumsController < ApplicationController
-  before_filter :require_subdomain!, :only => :show
+  before_filter :require_current_forum!, :only => :show
   before_filter :authenticate_user!, :except => :show
   
   def new

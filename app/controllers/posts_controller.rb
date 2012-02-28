@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_filter :require_subdomain!
+  before_filter :require_current_forum!
   before_filter :authenticate_user!, :except => [:show, :index]
   
   def new

@@ -1,6 +1,6 @@
 class VotesController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :require_subdomain!
+  before_filter :require_current_forum!
   
   def index
     redirect_to root_path, :notice => "You'll need to enable javascript to vote"

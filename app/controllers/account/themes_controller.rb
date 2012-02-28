@@ -1,6 +1,6 @@
 class Account::ThemesController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :require_subdomain!
+  before_filter :require_current_forum!
   load_and_authorize_resource
   
   def new

@@ -1,6 +1,6 @@
 class ParticipationsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :require_subdomain!, :except => :hide
+  before_filter :require_current_forum!, :except => :hide
   load_and_authorize_resource
   
   def ban

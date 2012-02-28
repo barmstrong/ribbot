@@ -1,6 +1,6 @@
 class Account::PostsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :require_subdomain!
+  before_filter :require_current_forum!
   
   def index
     @posts = Post.where(:forum_id => current_forum.id, :user_id => current_user.id)

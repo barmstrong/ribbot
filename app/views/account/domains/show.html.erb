@@ -1,0 +1,48 @@
+<div class="row">
+  <%= render 'shared/sidebar' %>
+  
+  <div class="span12">
+    <div class="page-header">
+      <h2>Custom Domains</h2>
+    </div>
+    
+    <p>Custom domains let you host your forum on your own website instead of using <strong><%= current_forum.subdomain%>.ribbot.com</strong>.</p>
+    <p>This requires some advanced setup configuring DNS records with your domain registrar.</p>
+    <h4>Using a subdomain like forum.example.com or www.example.com</h4>
+    <p>If you'd like to use a subdomain on the front of your domain you'll need to create a CNAME record for that subdomain pointing toward <strong>ribbot.com</strong>.  Google provides some nice <%= link_to "instructions", "http://support.google.com/blogger/bin/answer.py?hl=en&answer=58317", :target => "_blank" %> on how to do this with various registrars.</p>
+<pre>
+Name               Data             Type
+forum.example.com  ribbot.com       CNAME
+</pre>
+
+    <h4>Using a top level domain like example.com</h4>
+    <p>If you'd like to use a top level domain you'll need to create three A Records pointing to the following ip addresses:</p>
+<pre>
+Name               Data             Type
+example.com        75.101.163.44    A
+example.com        75.101.145.87    A
+example.com        174.129.212.2    A
+</pre>
+
+    
+    <%= form_for @forum, :url => account_domain_path(@forum) do |f| %>
+    
+      <%= f.error_messages :header_message => nil %>
+    
+      <fieldset>
+        <div class="clearfix">
+          <%= f.label :custom_domain, 'Custom Domain' %>
+          <div class="input">
+            <%= f.text_field :custom_domain %>
+            <%= link_to("test domain", "http://#{@forum.custom_domain}", :target => "_blank" ) if @forum.custom_domain.present? %>
+            <p class="help-block">www.example.com, forum.example.com, or example.com</p>
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="actions">
+        <%= submit_tag "Save Changes", :class => "btn primary", :disable_with => "Saving..." %>
+      </div>
+    <% end %>
+  </div>
+</div>

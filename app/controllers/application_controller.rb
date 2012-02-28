@@ -6,13 +6,18 @@ class ApplicationController < ActionController::Base
   before_filter :check_subdomain
   
   def check_subdomain
-    if Rails.env.production? and request.host.downcase =~ /^www|ribbot\.heroku\.com/
+    if Rails.env.production? and request.host.downcase == 'ribbot.herokuapp.com'
       redirect_to request.protocol + 'ribbot.com' + request.fullpath, :status => 301
     end
   end
   
+  LOCAL = ['ribbot.com', 'ribbot.local', 'localhost', 'example.com'].to_set
   def current_forum
-    @current_forum ||= request.subdomain.present? ? Forum.where(:subdomain => request.subdomain.downcase).first : nil
+    if LOCAL.include?(request.domain)
+      @current_forum ||= request.subdomain.present? ? Forum.where(:subdomain => request.subdomain.downcase).first : nil
+    else
+      @current_forum ||= Forum.where(:custom_domain => request.host.downcase).first
+    end
   end
   helper_method :current_forum
   
@@ -31,9 +36,9 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  def require_subdomain!
+  def require_current_forum!
     if current_forum.nil?
-      redirect_to forums_url(:subdomain => false)
+      redirect_to forums_url(:subdomain => false, :host => 'ribbot.com')
     end
   end
   

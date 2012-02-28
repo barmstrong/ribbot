@@ -1,6 +1,6 @@
 class Account::TagsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :require_subdomain!
+  before_filter :require_current_forum!
   
   def index
     authorize! :edit, current_forum

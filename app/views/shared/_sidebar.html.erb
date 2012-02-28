@@ -12,6 +12,7 @@
     <h5 class="<%= 'active' if controller_name == 'themes' %>"><%= link_to "Themes", account_themes_path %></h5>
     <% if current_user.owner_of?(current_forum) %>
       <h5 class="<%= 'active' if controller_name == 'ownerhip' %>"><%= link_to "Ownership", account_ownership_path %></h5>
+      <h5 class="<%= 'active' if controller_name == 'domain' %>"><%= link_to "Domain", account_domain_path %></h5>
     <% end %>
   <% end %>
 </div>

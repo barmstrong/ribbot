@@ -36,6 +36,7 @@ Ribbot::Application.routes.draw do
       post :uninstall, :on => :collection
     end
     resource :ownership
+    resource :domain
   end
   
   namespace :superuser do
