@@ -24,16 +24,12 @@ gem 'mongoid_rails_migrations',      '0.0.14'
 gem 'dalli',                         '1.1.3'
 gem 'url2png',                       '0.0.6'
 gem 'redcarpet',                     '2.0.0'
-
+gem 'heroku',                        '2.20.1'
 
 group :assets do
   gem 'sass-rails', "  ~> 3.1.4"
   gem 'coffee-rails', "~> 3.1.1"
   gem 'uglifier', '>= 1.0.3'
-end
-
-group :development do
-  gem 'heroku', '2.20.1'
 end
 
 group :test, :development do

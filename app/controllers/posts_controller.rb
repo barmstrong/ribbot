@@ -38,7 +38,7 @@ class PostsController < ApplicationController
   end
   
   def show
-    @post = current_forum.posts.find(params[:id])
+    @post = current_forum.posts.where(:_id =>params[:id]).first
     if @post.nil?
       redirect_to root_path(:subdomain => current_forum.subdomain), :notice => "That post is no longer available."
       return
