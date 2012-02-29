@@ -46,7 +46,7 @@ class UsersController < ApplicationController
       if params[:password] == params[:password_confirmation]
         @user.password = params[:password]
         if @user.save
-          redirect_to account_profile_path, :notice => "Password udpated!"
+          redirect_to account_profile_path, :notice => "Password updated!"
         else
           redirect_to account_profile_path, :notice => @user.errors.full_messages.join(" ")
         end

@@ -11,7 +11,7 @@ class Account::DomainsController < ApplicationController
     @forum = current_forum
     authorize! :update, @forum
     if @forum.update_attributes params[:forum]
-      redirect_to account_domain_path, :notice => "Custom domain udpated!"
+      redirect_to account_domain_path, :notice => "Custom domain updated!"
     else
       render :show
     end
