@@ -46,7 +46,7 @@ class Forum
   end
   
   def custom_domain_uses_valid_characters
-    if custom_domain.present? and (custom_domain =~ /[^a-z0-9\-\.]/i or custom_domain =~ /ribbot\.com/i
+    if custom_domain.present? and (custom_domain =~ /[^a-z0-9\-\.]/i or custom_domain =~ /ribbot\.com/i)
       errors.add(:custom_domain, "should be in the format www.example.com or forum.example.com")
     end
   end
