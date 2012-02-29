@@ -46,11 +46,13 @@ class Forum
   end
   
   def custom_domain_uses_valid_characters
-    errors.add(:custom_domain, "should be in the format www.example.com or forum.example.com") if custom_domain.present? and custom_domain =~ /[^a-z0-9\-\.]/i
+    if custom_domain.present? and (custom_domain =~ /[^a-z0-9\-\.]/i or custom_domain =~ /ribbot\.com/i
+      errors.add(:custom_domain, "should be in the format www.example.com or forum.example.com")
+    end
   end
   
   def subdomain_uses_valid_name
-    errors.add(:subdomain, "is already taken") if ['blog','legal','www','help','contact','jobs','about'].include?(subdomain.downcase)
+    errors.add(:subdomain, "is already taken") if ['blog','legal','www','help','contact','jobs','about','proxy'].include?(subdomain.downcase)
   end
   
   def add_or_remove_custom_domain
