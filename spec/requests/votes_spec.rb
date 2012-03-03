@@ -20,7 +20,7 @@ describe "Votes" do
     signin_as @u
     visit posts_path
     current_path.should == posts_path
-    page.should_not have_css("#post_#{@p.id} .voting a")
+    page.should have_css("#post_#{@p.id} .voting a")
 
     # visitor
     signin_as @u2
