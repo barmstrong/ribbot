@@ -11,7 +11,9 @@ class PostsController < ApplicationController
     @post.user = current_user
     @post.forum = current_forum
     if @post.save
-      redirect_to @post, :notice => "Post created!"
+      current_user.vote(@post, :up)
+      @post.update_ranking
+      redirect_to @post, :notice => "#{current_forum.post_label} created!"
     else
       render :new
     end

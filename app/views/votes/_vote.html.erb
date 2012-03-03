@@ -1,7 +1,5 @@
 <span class="voting">
-  <% if voteable.user == current_user %>
-    <span class="dead-links">&#9650; &#9660;</span>
-  <% elsif !signed_in? %>
+  <% if !signed_in? %>
     <%= link_to "&#9650;".html_safe, votes_path %>
     <%= link_to "&#9660;".html_safe, votes_path %>
   <% else %>

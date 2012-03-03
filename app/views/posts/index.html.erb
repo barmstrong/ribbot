@@ -13,7 +13,7 @@
     <% if @posts.empty? and current_forum.posts.empty? %>
       <div class="alert-message block-message success">
         <p><strong>Welcome! This is a brand new forum</strong></p>
-        <p>To get started try adding the first post.</p>
+        <p>To get started try adding the first <%= current_forum.post_label.downcase %>.</p>
         <div class="alert-actions">
           <%= link_to current_forum.new_post_label, new_post_path, :class => "btn" %>
         </div>
