@@ -15,6 +15,11 @@ class VotesController < ApplicationController
       @error = "You are voting too fast.  Please wait a bit."
     end
     
+    if current_user.created_at > 1.month.ago
+      allowed = false
+      @error = "You need more reputation before you downvote."
+    end
+    
     if voteable.respond_to?(:forum) and current_user.banned_from?(voteable.forum)
       allowed = false
     end
