@@ -7,12 +7,19 @@ You can use the hosted version (and see a demo) at http://ribbot.com or clone/fo
 &#x2713; Threaded discussions
 
 &#x2713; User voting and reputation
+
 &#x2713; Search
+
 &#x2713; Intelligent ranking algorithms
+
 &#x2713; Moderation Tools
+
 &#x2713; Custom Themes
+
 &#x2713; Custom domains (coming soon)
+
 &#x2713; Third party logins (coming soon)
+
 &#x2713; Forum monetization for owners (coming soon)
 
 ## About Ribbot
