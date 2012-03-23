@@ -1,18 +1,18 @@
-Ribbot is an open source discussion forum project that was inspired by Hacker News, Reddit, StackOverflow, and 37Signals Answers.
+Ribbot is an open source discussion forum that was inspired by Hacker News, Reddit, StackOverflow, and 37Signals Answers.
 
 You can use the hosted version (and see a demo) at http://ribbot.com or clone/fork it to run on your own system however you'd like.
 
 ## Features
 
-* Threaded discussions
-* User voting and reputation
-* Search
-* Intelligent ranking algorithms
-* Moderation Tools
-* Custom Themes
-* Custom domains (coming soon)
-* Third party logins (coming soon)
-* Forum monetization for owners (coming soon)
+&#x2713; Threaded discussions
+&#x2713; User voting and reputation
+&#x2713; Search
+&#x2713; Intelligent ranking algorithms
+&#x2713; Moderation Tools
+&#x2713; Custom Themes
+&#x2713; Custom domains (coming soon)
+&#x2713; Third party logins (coming soon)
+&#x2713; Forum monetization for owners (coming soon)
 
 ## About Ribbot
 
