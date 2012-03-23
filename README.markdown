@@ -28,8 +28,6 @@ Standard online forums often lead to low quality discussions. Sites like Hacker 
 
 Ribbot seeks to allow any company or online community to setup a similar forum and build a high quality community online.
 
-Ribbot was created by Brian Armstrong in 2011 in San Francisco, CA.
-
 ## Contributing
 
 * Feel free to fork, and submit pull requests
