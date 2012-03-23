@@ -1,45 +1,46 @@
 <div class="row">
   <%= render 'shared/sidebar' %>
   
-  <div class="span12">
-    <%= form_for @forum, :url => account_setting_path(@forum) do |f| %>
+  <div class="span9">
+    <%= form_for @forum, :url => account_setting_path(@forum), :html => {:class => "form-horizontal"} do |f| %>
     
-      <%= f.error_messages :header_message => nil %>
+      <%= render 'shared/error_messages', :target => @forum %>
     
       <fieldset>
         <legend>Customize Your Forum</legend>
-        <div class="clearfix">
-          <%= f.label :name %>
-          <div class="input"><%= f.text_field :name %></div>
+        
+        <div class="control-group">
+          <%= f.label :name, :class => "control-label"%>
+          <div class="controls"><%= f.text_field :name %></div>
         </div>
         
-        <div class="clearfix">
-          <%= f.label :description %>
-          <div class="input"><%= f.text_area :description, :class => "span8", :style => "height: 80px;" %></div>
+        <div class="control-group">
+          <%= f.label :description, :class => "control-label"%>
+          <div class="controls"><%= f.text_area :description, :class => 'span6', :style => "height: 80px;" %></div>
         </div>
         
-        <div class="clearfix">
-          <%= f.label :post_options, 'Allow submissions of' %>
-          <div class="input">
-            <%= f.select :post_options, Forum::POST_OPTIONS.collect{|k,v| [k.to_s.humanize, v] } %>
-          </div>
+        <div class="control-group">
+          <%= f.label :post_options, :value => "Allow submissions of", :class => "control-label"%>
+          <div class="controls"><%= f.select :post_options, Forum::POST_OPTIONS.collect{|k,v| [k.to_s.humanize, v] } %></div>
         </div>
       </fieldset>
     
       <fieldset>
         <legend>Button Labels</legend>
-        <div class="input"><p>By default Ribbot uses "Posts" and "Comments".  But you can change the site wording to use "Questions" and "Answers", link submissions, or anything else you'd like.  Defaults shown on the left.</p></div>
+        <div class="control-group">
+          By default Ribbot uses "Posts" and "Comments".  But you can change the site wording to use "Questions" and "Answers", link submissions, or anything else you'd like.  Defaults shown on the left.
+        </div>
 
         <% [:post_label, :posts_label, :new_post_label, :comment_label, :comments_label, :new_comment_label].each do |l| %>
-          <div class="clearfix">
-            <%= f.label l, Forum.fields[l.to_s].default %>
-            <div class="input"><%= f.text_field l %></div>
+          <div class="control-group">
+            <%= f.label l, Forum.fields[l.to_s].default, :class => "control-label" %>
+            <div class="controls"><%= f.text_field l %></div>
           </div>
         <% end %>
       </fieldset>
 
-      <div class="actions">
-        <%= submit_tag "Save Changes", :class => "btn primary", :disable_with => "Saving..." %>
+      <div class="form-actions">
+        <%= submit_tag "Save Changes", :class => "btn btn-primary", :disable_with => "Saving..." %>
       </div>
     <% end %>
   </div>

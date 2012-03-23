@@ -3,7 +3,7 @@
   <td>
     <div class="show"><%= tag.name %></div>
     <div class='edit' style='display: none;'>
-      <%= form_for tag, :url => account_tag_path(tag), :remote => true do |f| %>
+      <%= form_for tag, :url => account_tag_path(tag), :remote => true, :html => {:class => 'form-horizontal'} do |f| %>
         <%= f.text_field :name, :class => 'span3' %>
         <%= f.submit 'Save', :class => 'btn' %>
         or <%= link_to 'cancel', '#', :class => 'cancel-edit-tag-link' %>

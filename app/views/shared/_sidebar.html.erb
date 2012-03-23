@@ -1,18 +1,21 @@
-<div class="span3 left-sidebar">
-  <h5 class="<%= 'active' if controller_name == 'comments' %>"><%= link_to current_forum.comments_label, account_comments_path %></h5>
-  <h5 class="<%= 'active' if controller_name == 'posts' %>"><%= link_to current_forum.posts_label, account_posts_path %></h5>
-  <h5 class="<%= 'active' if controller_name == 'profiles' %>"><%= link_to 'Profile', account_profile_path %></h5>
+<div class="span3">
+  <ul class="nav nav-list well">
+    <li class="<%= 'active' if controller_name == 'comments' %>"><%= link_to current_forum.comments_label, account_comments_path %></li>
+    <li class="<%= 'active' if controller_name == 'posts' %>"><%= link_to current_forum.posts_label, account_posts_path %></li>
+    <li class="<%= 'active' if controller_name == 'profiles' %>"><%= link_to 'Profile', account_profile_path %></li>
 
-  <% if can? :edit, current_forum %>
-    <hr/>
-    <h6>Admin Options</h6>
-    <h5 class="<%= 'active' if controller_name == 'settings' %>"><%= link_to "Settings", account_settings_path %></h5>
-    <h5 class="<%= 'active' if controller_name == 'users' %>"><%= link_to "Users", account_users_path %></h5>
-    <h5 class="<%= 'active' if controller_name == 'tags' %>"><%= link_to "Tags", account_tags_path %></h5>
-    <h5 class="<%= 'active' if controller_name == 'themes' %>"><%= link_to "Themes", account_themes_path %></h5>
-    <% if current_user.owner_of?(current_forum) %>
-      <h5 class="<%= 'active' if controller_name == 'ownerhip' %>"><%= link_to "Ownership", account_ownership_path %></h5>
-      <h5 class="<%= 'active' if controller_name == 'domain' %>"><%= link_to "Domain", account_domain_path %></h5>
+    <% if can? :edit, current_forum %>
+      <li class="divider"></li>
+      <li class="nav-header">Admin Options</li>
+      <li class="<%= 'active' if controller_name == 'settings' %>"><%= link_to "Settings", account_settings_path %></li>
+      <li class="<%= 'active' if controller_name == 'users' %>"><%= link_to "Users", account_users_path %></li>
+      <li class="<%= 'active' if controller_name == 'tags' %>"><%= link_to "Tags", account_tags_path %></li>
+      <li class="<%= 'active' if controller_name == 'themes' %>"><%= link_to "Themes", account_themes_path %></li>
+      <% if current_user.owner_of?(current_forum) %>
+        <li class="<%= 'active' if controller_name == 'ownerhip' %>"><%= link_to "Ownership", account_ownership_path %></li>
+        <li class="<%= 'active' if controller_name == 'domain' %>"><%= link_to "Domain", account_domain_path %></li>
+      <% end %>
     <% end %>
-  <% end %>
+  </ul>
+  <br/>
 </div>

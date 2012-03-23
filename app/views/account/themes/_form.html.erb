@@ -2,7 +2,7 @@
 <%= form_for @theme, :url => url, :html => {:class => "post-form form-stacked"} do |f| %>
   <h2><%= @theme.new_record? ? 'Create A Theme' : 'Edit Theme' %></h2>
 
-  <%= f.error_messages :header_message => nil %>
+  <%= render 'shared/error_messages', :target => @theme %>
 
   <p>
     <h5><%= f.label :name %></h5>
@@ -16,15 +16,15 @@
   
   <p>
     <h5><%= f.label :public, 'Share publicly?' %></h5>
-    <label><%= f.radio_button :public, false %> No</label>
-    <label><%= f.radio_button :public, true %> Yes</label>
+    <label class="radio"><%= f.radio_button :public, false %> No</label>
+    <label class="radio"><%= f.radio_button :public, true %> Yes</label>
   </p>
 
-  <div class="actions">
+  <div class="form-actions">
     <% if @theme.new_record? %>
-      <%= submit_tag "Create Theme", :class => "btn primary", :disable_with => "Creating..." %> &nbsp; <%= link_to "Cancel", account_themes_path, :class => "btn" %>
+      <%= submit_tag "Create Theme", :class => "btn btn-primary", :disable_with => "Creating..." %> &nbsp; <%= link_to "Cancel", account_themes_path, :class => "btn" %>
     <% else %>
-      <%= submit_tag "Update Theme", :class => "btn primary", :disable_with => "Updating..." %> &nbsp; <%= link_to "Cancel", account_theme_path(@theme), :class => "btn" %>
+      <%= submit_tag "Update Theme", :class => "btn btn-primary", :disable_with => "Updating..." %> &nbsp; <%= link_to "Cancel", account_theme_path(@theme), :class => "btn" %>
     <% end %>
   </div>
 <% end %>

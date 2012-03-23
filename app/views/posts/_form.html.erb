@@ -1,34 +1,34 @@
 <%= form_for @post, :html => {:class => "post-form form-stacked"} do |f| %>
-  <h2><%= current_forum.new_post_label %></h2>
+  <h2><%= current_forum.new_post_label %></h2><br/>
   
-  <%= f.error_messages :header_message => nil %>
+  <%= render 'shared/error_messages', :target => @post %>
   
   <p>
-    <h5><%= f.label :title %></h5>
+    <%= f.label :title %>
     <%= f.text_field :title, :class => "span8" %>
   </p>
   
   <p>
     <% if current_forum.post_options == Forum::POST_OPTIONS[:text_or_url] %>
-      <h5><%= link_to 'Text', '#', :class => 'text-link active' %> or <%= link_to 'URL', '#', :class => 'url-link' %></h5>
+      <%= link_to 'Text', '#', :class => 'text-link active' %> or <%= link_to 'URL', '#', :class => 'url-link' %><br/>
       <%= f.text_field :url, :placeholder => 'http://', :class => "span8", :style => "display: none;" %>
       <%= f.text_area :text, :class => "span8" %>
     <% elsif current_forum.post_options == Forum::POST_OPTIONS[:url_or_text] %>
-      <h5><%= link_to 'URL', '#', :class => 'url-link active' %> or <%= link_to 'Text', '#', :class => 'text-link' %></h5>
+      <%= link_to 'URL', '#', :class => 'url-link active' %> or <%= link_to 'Text', '#', :class => 'text-link' %><br/>
       <%= f.text_field :url, :placeholder => 'http://', :class => "span8" %>
       <%= f.text_area :text, :class => "span8", :style => "display: none;" %>
     <% elsif current_forum.post_options == Forum::POST_OPTIONS[:url_only] %>
-      <h5><%= f.label :url, 'URL' %></h5>
+      <%= f.label :url, 'URL' %><br/>
       <%= f.text_field :url, :placeholder => 'http://', :class => "span8" %>
     <% elsif current_forum.post_options == Forum::POST_OPTIONS[:text_only] %>
-      <h5><%= f.label :text %></h5>
+      <%= f.label :text %><br/>
       <%= f.text_area :text, :class => "span8" %>
     <% end %>
   </p>
   
   <% if current_forum.tags.present? %>
     <p>
-      <h5><%= f.label :tag_ids, 'Tags' %></h5>
+      <%= f.label :tag_ids, 'Tags' %>
       <% current_forum.tags.each do |tag| %>
         <span>
           <% on = @post.tags.include?(tag) %>
@@ -39,11 +39,11 @@
     </p>
   <% end %>
   
-  <div class="actions">
+  <div class="form-actions">
     <% if @post.new_record? %>
-      <%= submit_tag "Submit", :class => "btn primary", :disable_with => "Submitting..." %> &nbsp; <%= link_to "Cancel", :back, :class => "btn" %>
+      <%= submit_tag "Submit", :class => "btn btn-primary", :disable_with => "Submitting..." %> &nbsp; <%= link_to "Cancel", :back, :class => "btn" %>
     <% else %>
-      <%= submit_tag "Save Changes", :class => "btn primary", :disable_with => "Saving..." %> &nbsp; <%= link_to "Cancel", :back, :class => "btn" %>
+      <%= submit_tag "Save Changes", :class => "btn btn-primary", :disable_with => "Saving..." %> &nbsp; <%= link_to "Cancel", :back, :class => "btn" %>
     <% end %>
   </div>
 <% end %>

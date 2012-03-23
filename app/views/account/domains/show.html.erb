@@ -1,7 +1,7 @@
 <div class="row">
   <%= render 'shared/sidebar' %>
   
-  <div class="span12">
+  <div class="span9">
     <div class="page-header">
       <h2>Custom Domains</h2>
     </div>
@@ -27,7 +27,7 @@ example.com        174.129.212.2    A
     
     <%= form_for @forum, :url => account_domain_path(@forum) do |f| %>
     
-      <%= f.error_messages :header_message => nil %>
+      <%= render 'shared/error_messages', :target => @forum %>
     
       <fieldset>
         <div class="clearfix">
@@ -40,8 +40,8 @@ example.com        174.129.212.2    A
         </div>
       </fieldset>
 
-      <div class="actions">
-        <%= submit_tag "Save Changes", :class => "btn primary", :disable_with => "Saving..." %>
+      <div class="form-actions">
+        <%= submit_tag "Save Changes", :class => "btn btn-primary", :disable_with => "Saving..." %>
       </div>
     <% end %>
   </div>

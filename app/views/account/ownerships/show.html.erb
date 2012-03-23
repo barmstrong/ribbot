@@ -1,7 +1,7 @@
 <div class="row">
   <%= render 'shared/sidebar' %>
   
-  <div class="span12">
+  <div class="span9">
     <p>To permanently delete this forum you can <%= link_to "click here", forum_url(current_forum, :subdomain => false), :class => "delete-forum", :confirm => "Are you ABSOLUTELY sure you want to delete this forum?  This will remove all posts and comments  and cannot be undone.", :method => :delete %>.</p>
     <p>Note that this cannot be undone.  It will remove all posts and comments along with the forum.</p>
   </div>

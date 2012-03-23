@@ -1,16 +1,16 @@
 <div class="row">
   <%= render 'shared/sidebar' %>
   
-  <div class="span12">
+  <div class="span9">
     
-    <%= link_to "+ Create A Theme", new_account_theme_path, :class => "btn primary pull-right create-a-theme" %>
+    <%= link_to "+ Create A Theme", new_account_theme_path, :class => "btn btn-primary pull-right create-a-theme" %>
     
     <% if params[:page].blank? %>
       <div class="page-header">
         <h2>Current Theme</h2>
       </div>
       <% if current_forum.theme.present? %>
-        <ul class="media-grid">
+        <ul class="thumbnails">
           <%= render current_forum.theme %>
           <li>
             <%= link_to 'Uninstall Current Theme', uninstall_account_themes_path, :method => :post, :class => "btn" %>
@@ -25,7 +25,7 @@
         <div class="page-header">
           <h2>Your Themes</h2>
         </div>
-        <ul class="media-grid">
+        <ul class="thumbnails">
           <%= render current_user.themes %>
         </ul>
       <% end %>
@@ -34,7 +34,7 @@
     <div class="page-header">
       <h2>All Themes</h2>
     </div>
-    <ul class="media-grid">
+    <ul class="thumbnails">
       <%= render @themes %>
     </ul>
     <%= paginate @themes %>

@@ -1,9 +1,9 @@
-<li class="theme">
-  <div class="pull-left">
+<li class="span3 theme">
+  <div class="thumbnail">
     <%= link_to account_theme_path(theme) do %>
       <%= theme_image(theme) %>
       <span class="pull-right"><%= theme.votes_point %> point<%= 's' unless theme.votes_point == 1 %></span>
-      <%= truncate theme.name, :lenght => 20 %>
+      <h5><%= truncate theme.name, :lenght => 20 %></h5>
     <% end %>
   </div>
 </li>

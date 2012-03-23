@@ -1,16 +1,16 @@
 <div class="row">
   <%= render 'shared/sidebar' %>
   
-  <div class="span12">
-    <%= form_for @tag, :url => account_tags_path, :remote => true do |f| %>
+  <div class="span9">
+    <%= form_for @tag, :url => account_tags_path, :remote => true, :html => {:class => 'form-horizontal'} do |f| %>
       <p>Tags can be used to categorize <%= current_forum.posts_label.downcase %> in your forum.</p>
 
-      <%= f.error_messages :header_message => nil %>
+      <%= render 'shared/error_messages', :target => @tag %>
 
-      <%= f.text_field :name, :class => "span3" %> <%= f.submit 'Create Tag', :class => "btn primary", :disable_with => "Creating..." %>
+      <%= f.text_field :name, :class => "span3" %> <%= f.submit 'Create Tag', :class => "btn btn-primary", :disable_with => "Creating..." %>
     <% end %>
     
-    <table id='tags' class="tags borderless" data-update-url="<%= sort_account_tags_url %>">
+    <table id='tags' class="table tags borderless" data-update-url="<%= sort_account_tags_url %>">
       <thead>
         <tr>
           <th></th>
