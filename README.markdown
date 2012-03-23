@@ -5,6 +5,7 @@ You can use the hosted version (and see a demo) at http://ribbot.com or clone/fo
 ## Features
 
 &#x2713; Threaded discussions
+
 &#x2713; User voting and reputation
 &#x2713; Search
 &#x2713; Intelligent ranking algorithms
