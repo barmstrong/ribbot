@@ -16,7 +16,7 @@ You can use the hosted version (and see a demo) at http://ribbot.com or clone/fo
 
 &#x2713; Custom Themes
 
-&#x2713; Custom domains (coming soon)
+&#x2713; Custom domains
 
 &#x2713; Third party logins (coming soon)
 
