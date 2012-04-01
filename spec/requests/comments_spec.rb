@@ -18,7 +18,7 @@ describe "Comments" do
     current_path.should == signin_path
     
     signin_as @u
-    
+     
     visit post_url(@p, :subdomain => @f.subdomain)
     fill_in 'comment_text', :with => "Some comment"
     assert_difference "Comment.count" do

@@ -4,9 +4,9 @@
   <title><%= title %></title>
   <meta name="Description" content="<%= meta_description %>">
   <link rel="shortcut icon" href="/favicon.ico" />
-  <%= stylesheet_link_tag    "application" %>
-  <%= stylesheet_link_tag    theme_path(current_theme) if current_theme.present? %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag "application" %>
+  <%= stylesheet_link_tag theme_path(current_theme) if current_theme.present? %>
+  
 
   <%= csrf_meta_tags %>
   <%= analytics_code %>
@@ -39,7 +39,7 @@
             </ul>
           <% else %>
             <ul class="nav">
-              <li class="<%= 'active' if controller_name == 'forums' %>"><%= link_to "Home", root_path %></li>
+              <%= render 'pages/header' %>
             </ul>
           <% end %>
           
@@ -107,6 +107,12 @@
     </footer>
   </div>
   
-
+  <%= javascript_include_tag "application" %>
+  
+  <script type="text/javascript">
+    $(document).ready(function() {
+      <%= yield :javascript_footer %>
+    });
+  </script>
 </body>
 </html>

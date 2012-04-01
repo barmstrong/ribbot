@@ -1,0 +1,37 @@
+<div class="row">
+  <%= render 'shared/sidebar' %>
+  
+  <div class="span9">
+    <%= link_to "+ Create A Page", new_account_page_path, :class => 'btn btn-primary pull-right' %>
+    
+    <p>Pages are shown in the top header of your forum and can contain custom content or a link to an external site.</p>
+    
+    <% if @pages.empty? %>
+      <div class="well">You don't have any pages yet.</div>
+    <% else %>    
+      <table id='pages' class="table pages borderless" data-update-url="<%= sort_account_pages_url %>">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Page</th>
+            <th>Type</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @pages.each do |page| %>
+            <tr class="page" id="<%= dom_id(page) %>">
+              <td><span class="handle ui-icon ui-icon-arrowthick-2-n-s"></span></td>
+              <td><%= link_to page.name, edit_account_page_path(page) %></td>
+              <td style="width: 125px;"><%= page.url? ? 'External link' : 'Content' %></td>
+              <td>
+                <%= link_to 'Edit', edit_account_page_path(page), :class => 'btn' %>
+                <%= link_to 'Delete', account_page_path(page), :class => 'btn', :method => :delete, :confirm => "Are you sure you want to delete this page?  This can't be undone." %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>

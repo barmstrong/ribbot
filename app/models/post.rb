@@ -76,14 +76,6 @@ class Post
     end
   end
   
-  # def update_posts_count num
-  #   Tag.collection.update(
-  #     {:_id=>{"$in"=>tag_ids}},
-  #     {"$set" => {:posts_count => num}},
-  #     {:multi => true}
-  #   )
-  # end
-  
   def update_post_counts
     if tag_ids_changed?
       tags.each do |t|

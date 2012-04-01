@@ -12,7 +12,7 @@
   </td>
   <td><%= tag.posts_count %></td>
   <td>
-    <%= link_to 'edit', '#', :class => 'edit-tag-link' %>
-    <%= link_to 'delete', account_tag_path(tag), :method => :delete, :remote => true, :confirm => (tag.posts_count < 5 ? nil : "Are you sure?  This tag is being used on #{pluralize tag.posts_count, 'post'}.") %>
+    <%= link_to 'Edit', '#', :class => 'btn edit-tag-link' %>
+    <%= link_to 'Delete', account_tag_path(tag), :class => 'btn', :method => :delete, :remote => true, :confirm => (tag.posts_count < 5 ? nil : "Are you sure?  This tag is being used on #{pluralize tag.posts_count, 'post'}.") %>
   </td>
 </tr>

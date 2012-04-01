@@ -8,4 +8,5 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require wysihtml5/wysihtml5-0.3.0_rc2.js
 //= require_tree .

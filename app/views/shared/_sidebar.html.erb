@@ -10,6 +10,7 @@
       <li class="<%= 'active' if controller_name == 'settings' %>"><%= link_to "Settings", account_settings_path %></li>
       <li class="<%= 'active' if controller_name == 'users' %>"><%= link_to "Users", account_users_path %></li>
       <li class="<%= 'active' if controller_name == 'tags' %>"><%= link_to "Tags", account_tags_path %></li>
+      <li class="<%= 'active' if controller_name == 'pages' %>"><%= link_to "Pages", account_pages_path %></li>
       <li class="<%= 'active' if controller_name == 'themes' %>"><%= link_to "Themes", account_themes_path %></li>
       <% if current_user.owner_of?(current_forum) %>
         <li class="<%= 'active' if controller_name == 'ownerhip' %>"><%= link_to "Ownership", account_ownership_path %></li>

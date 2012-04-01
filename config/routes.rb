@@ -21,6 +21,7 @@ Ribbot::Application.routes.draw do
     end
   end
   resources :themes
+  resources :pages
   
   namespace :account do
     resources :comments
@@ -29,6 +30,9 @@ Ribbot::Application.routes.draw do
     resources :users
     resources :settings
     resources :tags do
+      post :sort, :on => :collection
+    end
+    resources :pages do
       post :sort, :on => :collection
     end
     resources :themes do

@@ -1,6 +1,7 @@
 form.post-form {
   textarea { height: 150px; }
-  
+}
+form.post-form, form.page-form {  
   .url-link.active,
   .text-link.active { color: #333; text-decoration: none; cursor: default; }
 }

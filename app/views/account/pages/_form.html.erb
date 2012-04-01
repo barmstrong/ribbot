@@ -1,0 +1,39 @@
+<%= form_for [:account, @page], :html => {:class => "page-form form-stacked"} do |f| %>
+  <h2>Create A New Page</h2><br/>
+  
+  <%= render 'shared/error_messages', :target => @page %>
+  
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name, :class => "span8" %>
+  </p>
+  
+  <p>
+    <% if @page.text? %>
+      <%= link_to 'Text', '#', :class => 'text-link active' %> or <%= link_to 'URL', '#', :class => 'url-link' %><br/>
+    <% else %>
+      <%= link_to 'Text', '#', :class => 'text-link' %> or <%= link_to 'URL', '#', :class => 'url-link active' %><br/>
+    <% end %>
+    <div id="url_container" style="display: none;">
+      <%= f.text_field :url, :placeholder => 'http://', :class => "span8" %>
+    </div>
+    <div id="text_container">
+      <%= f.text_area :text, :class => "span8" %>
+    </div>
+  </p>
+  
+  <div class="form-actions">
+    <% if @page.new_record? %>
+      <%= submit_tag "Submit", :class => "btn btn-primary", :disable_with => "Submitting..." %> &nbsp; <%= link_to "Cancel", account_pages_path, :class => "btn" %>
+    <% else %>
+      <%= link_to "&larr; Back to All Pages".html_safe, account_pages_path, :class => 'btn pull-right' %>
+      <%= submit_tag "Save Changes", :class => "btn btn-primary", :disable_with => "Saving..." %> &nbsp; <%= link_to "Cancel", account_pages_path, :class => "btn" %>
+    <% end %>
+  </div>
+<% end %>
+
+<% content_for :javascript_footer do %>
+  $('#page_text').wysihtml5({
+    autoLink:       false
+  });
+<% end %>

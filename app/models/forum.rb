@@ -3,10 +3,10 @@ class Forum
   include Mongoid::Timestamps
   
   POST_OPTIONS = {
-    :text_or_url => 0,
-    :url_or_text => 1,
-    :text_only => 2,
-    :url_only => 3
+    text_or_url: 0,
+    url_or_text: 1,
+    text_only:   2,
+    url_only:    3
   }
   
   field :subdomain, type: String
@@ -29,6 +29,7 @@ class Forum
   has_many :posts
   has_many :participations, :dependent => :destroy
   has_many :tags
+  has_many :pages
   belongs_to :theme
   
   validates_presence_of :subdomain, :name

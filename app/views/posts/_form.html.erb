@@ -18,10 +18,10 @@
       <%= f.text_field :url, :placeholder => 'http://', :class => "span8" %>
       <%= f.text_area :text, :class => "span8", :style => "display: none;" %>
     <% elsif current_forum.post_options == Forum::POST_OPTIONS[:url_only] %>
-      <%= f.label :url, 'URL' %><br/>
+      <%= f.label :url, 'URL' %>
       <%= f.text_field :url, :placeholder => 'http://', :class => "span8" %>
     <% elsif current_forum.post_options == Forum::POST_OPTIONS[:text_only] %>
-      <%= f.label :text %><br/>
+      <%= f.label :text %>
       <%= f.text_area :text, :class => "span8" %>
     <% end %>
   </p>

@@ -43,7 +43,7 @@ describe "Votes" do
     page.should have_content("Tag3")
     
     within "##{dom_id(t)}" do
-      click_on 'delete'
+      click_on 'Delete'
     end
     page.should_not have_content("Tag3")
     @f.reload.tags.size.should == 1
