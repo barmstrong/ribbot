@@ -1,11 +1,11 @@
-<%# cache ['header v1', current_forum] do %>
+<% cache ['header v1', current_forum] do %>
   <% current_forum.pages.asc(:position).each do |page| %>
     <li class="header_page_<%= page.id %>">
       <% if page.url? %>
-        <%= link_to page.name, page.url, :target => "_blank", :rel => 'nofollow' %>
+        <%= link_to page.name, page.url, :rel => 'nofollow' %>
       <% else %>
         <%= link_to page.name, page_path(page) %>
       <% end %>
     </li>
   <% end %>
-<%# end %>
+<% end %>
