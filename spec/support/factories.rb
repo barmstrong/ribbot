@@ -45,7 +45,7 @@ def forum_attributes
 end
 
 def user_attributes
-  {:email => "user#{user_count}@example.com", :password => "test123", :verified_at => Time.zone.now}
+  {:email => "user#{user_count}@example.com", :password => "test123", :verified_at => Time.zone.now, :created_at => 1.month.ago}
 end
 
 def post_attributes

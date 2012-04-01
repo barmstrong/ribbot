@@ -10,10 +10,10 @@ describe "Comments" do
   
   it "should require login to make a new comment" do    
     visit post_url(@p, :subdomain => @f.subdomain)
-    page.should have_css("#new_comment .btn.primary[disabled]")
+    page.should have_css("#new_comment .btn-primary[disabled]")
     fill_in 'comment_text', :with => "Some comment"
     assert_no_difference "Comment.count" do
-      find('#new_comment .btn.primary').click
+      find('#new_comment .btn-primary').click
     end
     current_path.should == signin_path
     
@@ -22,7 +22,7 @@ describe "Comments" do
     visit post_url(@p, :subdomain => @f.subdomain)
     fill_in 'comment_text', :with => "Some comment"
     assert_difference "Comment.count" do
-      find('#new_comment .btn.primary').click
+      find('#new_comment .btn-primary').click
     end
     page.should have_content("Some comment")
   end
@@ -41,7 +41,7 @@ describe "Comments" do
         find(".reply-link").click
         page.should have_css("#new_comment")
         find('#comment_text').set("this is a reply")
-        find("form .btn.primary").click
+        find("form .btn-primary").click
       end
       page.should have_content("this is a reply")
       visit post_path(@p)

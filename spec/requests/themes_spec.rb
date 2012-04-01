@@ -14,7 +14,7 @@ describe "Themes" do
     fill_in 'theme_name', :with => "Test Theme"
     fill_in 'theme_css', :with => ".topbar .fill { background: #133783; }"
     assert_difference "Theme.count" do
-      find('.btn.primary').click
+      find('.btn-primary').click
     end
     t = Theme.last
     

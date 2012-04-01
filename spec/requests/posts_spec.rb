@@ -27,7 +27,7 @@ describe "Posts" do
     fill_in 'post_title', :with => "Some Title"
     fill_in 'post_text', :with => "Some text"
     assert_difference "Post.count" do
-      find('.btn.primary').click
+      find('.btn-primary').click
     end
     page.should have_content("Some Title")
     page.should have_content("Some text")

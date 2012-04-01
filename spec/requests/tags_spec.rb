@@ -18,12 +18,12 @@ describe "Votes" do
     visit account_tags_path
     current_path.should == account_tags_path
     fill_in 'tag_name', :with => "Tag1"
-    find('form#new_tag .btn.primary').click
+    find('form#new_tag .btn-primary').click
     within 'table.tags' do
       page.should have_content "Tag1"
     end
     fill_in 'tag_name', :with => "Tag2"
-    find('form#new_tag .btn.primary').click
+    find('form#new_tag .btn-primary').click
     within 'table.tags' do
       page.should have_content "Tag2"
     end

@@ -12,7 +12,7 @@ describe "Signup" do
     assert_difference "User.count" do
       assert_difference "Forum.count" do
         assert_difference "emails_sent" do
-          find('form#new_user .btn.primary').click
+          find('form#new_user .btn-primary').click
         end
       end
     end
