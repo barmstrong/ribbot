@@ -56,4 +56,8 @@ module ApplicationHelper
     </script>".html_safe
   end
   
+  def tag_link t, active=false
+    link_to t.name, root_path(request.query_parameters.merge(:tags => t.name)), :class => "tag #{'active' if active}"
+  end
+  
 end

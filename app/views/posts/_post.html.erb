@@ -10,6 +10,11 @@
   <% end %>
     
   <td class="description">
+    <div class="pull-right">
+      <% post.tags.each do |t| %>
+        <%= tag_link t %>
+      <% end %>
+    </div>
     <% if post.url.present? %>
       <%= link_to post.title, post.url, :rel => 'nofollow', :class => 'post-link' %>
     <% else %>
