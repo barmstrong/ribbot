@@ -1,14 +1,14 @@
 class VerificationsController < ApplicationController
-  #before_filter :authenticate_user!, :only => :index
 
   def index
     if current_user.nil?
       redirect_to signin_path, :notice => "Please sign in first."
     end
+    current_user.send_verification_email(current_forum)
   end
 
   def create
-    current_user.send_verification_email
+    current_user.send_verification_email(current_forum)
     redirect_to verifications_path, :notice => "Verification email sent!"
   end
 
@@ -19,8 +19,8 @@ class VerificationsController < ApplicationController
         user.save!
       end
       path = forums_path
-      if current_user and p = current_user.participations.first
-        path = root_url(:subdomain => p.forum.subdomain)
+      if current_forum
+        path = root_url(:subdomain => current_forum.subdomain)
       end
       redirect_to path, :notice => "Your account has been verified!"    
     else

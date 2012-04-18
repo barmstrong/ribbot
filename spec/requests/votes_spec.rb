@@ -61,6 +61,7 @@ describe "Votes" do
     
     # undo downvote
     find("#{selector} .downvote").click
+    visit path
     find("#{selector} .points").text.should == '0'
     page.should_not have_css("#{selector} .downvote.on")
     visit path

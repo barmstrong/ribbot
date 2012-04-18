@@ -18,6 +18,8 @@ class ApplicationController < ActionController::Base
     else
       @current_forum ||= Forum.where(:custom_domain => request.host.downcase).first
     end
+    
+    @current_forum
   end
   helper_method :current_forum
   

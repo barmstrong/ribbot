@@ -36,7 +36,6 @@ class User
   
   attr_protected :password_digest, :superuser
 
-  after_create :send_verification_email
   before_validation :downcase_email
   
   def downcase_email
@@ -85,10 +84,18 @@ class User
     verified_at.present?
   end
   
-  def send_verification_email
+  def send_verification_email forum
     generate_token(:verification_token) if verification_token.nil?
     save!
-    Mailer.email_verification(self).deliver
+    Mailer.email_verification(self, forum).deliver
+  end
+  
+  def host_for_email
+    if p = participations.desc(:created_at).first
+      p.forum.host_for_email
+    else
+      Ribbot::Application.config.action_mailer.default_url_options[:host]
+    end
   end
   
   def up_voted? voteable

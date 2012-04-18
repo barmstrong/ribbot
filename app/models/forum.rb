@@ -90,4 +90,12 @@ class Forum
     self.subdomain = subdomain.downcase
     self.custom_domain = custom_domain.downcase if custom_domain.present?
   end
+  
+  def host_for_email
+    if custom_domain.present?
+      custom_domain
+    else
+      subdomain+"."+Ribbot::Application.config.action_mailer.default_url_options[:host]
+    end
+  end
 end
