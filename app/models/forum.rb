@@ -91,7 +91,7 @@ class Forum
     self.custom_domain = custom_domain.downcase if custom_domain.present?
   end
   
-  def host_for_email
+  def hostname
     if custom_domain.present?
       custom_domain
     else

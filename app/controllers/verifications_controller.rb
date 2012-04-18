@@ -1,6 +1,7 @@
 class VerificationsController < ApplicationController
 
   def index
+    flash.delete(:notice)
     if current_user.nil?
       redirect_to signin_path, :notice => "Please sign in first."
     end

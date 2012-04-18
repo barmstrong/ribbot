@@ -1,16 +1,27 @@
 class Mailer < ActionMailer::Base
-  default from: "Ribbot.com <contact@ribbot.com>"
 
-  def password_reset user
+  def password_reset user, forum
     @user = user
-    @host = user.host_for_email
-    mail :to => user.email, :subject => "Resetting Your Password"
+    customize(forum)
+    mail :from => @from, :to => user.email, :subject => "Resetting Your Password"
   end
   
   def email_verification user, forum
     @user = user
-    @host = user.host_for_email
-    mail :to => user.email, :subject => "Please Verify Your Email Address"
+    customize(forum)
+    mail :from => @from, :to => user.email, :subject => "Please Verify Your Email Address"
+  end
+  
+  private
+  
+  def customize forum
+    if forum.nil?
+      @host = Ribbot::Application.config.action_mailer.default_url_options[:host]
+      @from = "Ribbot.com <contact@ribbot.com>"
+    else
+      @host = forum.hostname
+      @from = "#{forum.name} <contact@ribbot.com>"
+    end
   end
   
 end

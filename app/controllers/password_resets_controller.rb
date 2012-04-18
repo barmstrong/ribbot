@@ -2,7 +2,7 @@ class PasswordResetsController < ApplicationController
   
   def create
     user = User.where(:email => params[:email].strip).first
-    user.send_password_reset if user
+    user.send_password_reset(current_forum) if user
     redirect_to root_url, :notice => "Email sent with password reset instructions."
   end
   

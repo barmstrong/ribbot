@@ -12,7 +12,6 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     @user.password = params[:user][:password]
     if @user.save
-      current_forum.add_member(@user) if current_forum
       signin! @user, "Thanks for creating an account!"
     else
       try_login or render 'sessions/new'

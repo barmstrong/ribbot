@@ -73,29 +73,21 @@ class User
     Participation.exists?(:conditions => {:forum_id => forum.id, :user_id => self.id, :banned => true})
   end
   
-  def send_password_reset
+  def send_password_reset forum=nil
     generate_token(:password_reset_token)
     self.password_reset_sent_at = Time.zone.now
     save!
-    Mailer.password_reset(self).deliver
+    Mailer.password_reset(self, forum).deliver
   end
   
   def verified?
     verified_at.present?
   end
   
-  def send_verification_email forum
+  def send_verification_email forum=nil
     generate_token(:verification_token) if verification_token.nil?
     save!
     Mailer.email_verification(self, forum).deliver
-  end
-  
-  def host_for_email
-    if p = participations.desc(:created_at).first
-      p.forum.host_for_email
-    else
-      Ribbot::Application.config.action_mailer.default_url_options[:host]
-    end
   end
   
   def up_voted? voteable
