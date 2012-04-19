@@ -4,6 +4,7 @@ class VerificationsController < ApplicationController
     flash.delete(:notice)
     if current_user.nil?
       redirect_to signin_path, :notice => "Please sign in first."
+      return
     end
     current_user.send_verification_email(current_forum)
   end
