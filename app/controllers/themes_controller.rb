@@ -1,6 +1,4 @@
 class ThemesController < ApplicationController
-  before_filter :require_current_forum!
-  
   def show
     @theme = Theme.find(params[:id])
     render :nothing => true and return if @theme.blank?
