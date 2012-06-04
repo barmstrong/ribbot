@@ -8,7 +8,7 @@ describe "Comments" do
     @u = @p.user
   end
   
-  it "should require login to make a new comment" do    
+  it "should require login to make a new comment" do
     visit post_url(@p, :subdomain => @f.subdomain)
     page.should have_css("#new_comment .btn-primary[disabled]")
     fill_in 'comment_text', :with => "Some comment"
