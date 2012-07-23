@@ -1,10 +1,14 @@
 module Authentication
   def signin! user, notice = "Welcome back #{user.name}!"
     session[:user_id] = user.id
+    @current_user = nil
     path = verifications_path
+    p 1
     if user.verified?
+      p 2
       path = current_forum ? root_path : forums_path
     end
+    p 3, path
     redirect_to path, :notice => notice
   end
   

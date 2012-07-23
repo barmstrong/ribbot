@@ -2,7 +2,7 @@ class Comment
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongo::Voteable
-  acts_as_nested_set
+  acts_as_nested_set scope: :post_id
   include MarkdownProcessor
   
   field :text, type: String
