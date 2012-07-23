@@ -25,7 +25,7 @@ example.com        174.129.212.2    A
 </pre>
 
     
-    <%= form_for @forum, :url => account_domain_path(@forum) do |f| %>
+    <%= form_for @forum, :url => account_domain_path do |f| %>
     
       <%= render 'shared/error_messages', :target => @forum %>
     

@@ -27,7 +27,6 @@ class UsersController < ApplicationController
       @user.save!
       @forum.save!
       @forum.add_owner(@user)
-      puts 'HERE', @user.new_record?, @user.inspect, @user.errors.inspect
       signin! @user, "Thanks for creating an account!"
     else
       try_login or render :new
