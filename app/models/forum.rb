@@ -24,7 +24,7 @@ class Forum
   field :new_comment_label, type: String, default: "Add Comment"
   
   index :subdomain, unique: true
-  index :custom_domain, unique: true
+  index :custom_domain
   
   has_many :posts
   has_many :participations, :dependent => :destroy

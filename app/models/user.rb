@@ -21,7 +21,7 @@ class User
   field :about, :type => String
 
   index :email, unique: true
-  index :verification_token, unique: true
+  index :verification_token
   
   has_many :participations
   has_many :posts
@@ -33,6 +33,7 @@ class User
   validates :email, :presence => true, :uniqueness => true, :email => true
   validates_presence_of :password, :on => :create
   validates_length_of :password, :minimum => 7, :unless => Proc.new {|u| u.password.nil? }
+  validates_uniqueness_of :verification_token, :allow_blank => true
   
   attr_protected :password_digest, :superuser
 
