@@ -3,7 +3,7 @@ module Account::ThemesHelper
   def theme_image theme, size="210x150"
     if Rails.env.production?
       url = "support.ribbot.com/?theme_preview=#{theme.id}"
-      site_image_tag(webyshots_url(url, size), :size => size).html_safe
+      image_tag(webyshots_url(url, size), :size => size).html_safe
     else
       image_tag "http://placehold.it/#{size}"
     end
