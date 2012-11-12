@@ -12,6 +12,6 @@ module Account::ThemesHelper
   def webyshots_url(url, size)
     safe_url = CGI.escape(url)
     token = Digest::MD5.hexdigest("#{ENV['WEBYSHOTS_SECRET']}+#{safe_url}")
-    "http://api.webyshots.com/v1/shot/#{ENV['WEBYSHOT_KEY']}/#{token}/?url=#{CGI.escape url}&dimension=#{size}&format=png&cache=false"
+    "http://api.webyshots.com/v1/shot/#{ENV['WEBYSHOT_KEY']}/#{token}/?url=#{CGI.escape url}&dimension=#{size}&format=png"
   end
 end
