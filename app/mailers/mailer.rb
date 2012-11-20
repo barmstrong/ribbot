@@ -20,7 +20,7 @@ class Mailer < ActionMailer::Base
       @from = "Ribbot.com <contact@ribbot.com>"
     else
       @host = forum.hostname
-      @from = "#{forum.name} <contact@ribbot.com>"
+      @from = "\"#{forum.name.gsub('"', '')}\" <contact@ribbot.com>"
     end
   end
   
