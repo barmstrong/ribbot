@@ -25,7 +25,10 @@
   
   <div class="span4 offset1">
     <%= form_for (@user || User.new), :html => {:class => "form-stacked"} do |f| %>
+
       <h1>Create An Account</h1><br/>
+
+      <%= render 'shared/error_messages', :target => @user %>
       
       <div class="field">
         <%= f.label :email, 'Your Email' %>

@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     if @user.save
       signin! @user, "Thanks for creating an account!"
     else
+      puts @user.errors.inspect
       try_login or render 'sessions/new'
     end
   end
