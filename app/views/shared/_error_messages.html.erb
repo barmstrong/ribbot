@@ -1,4 +1,4 @@
-<% if target.errors.any? %>
+<% if defined?(target) and target.errors.any? %>
   <div class="alert">
     <% target.errors.full_messages.each do |msg| %>
       <%= msg %><br/>
